@@ -1,6 +1,6 @@
 ﻿namespace RekamMedisKlinik
 {
-    partial class frmDashboard
+    partial class FormMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel2 = new Panel();
+            panelMenu = new Panel();
             btnPembayaran = new FontAwesome.Sharp.IconButton();
             btnRekamMedis = new FontAwesome.Sharp.IconButton();
             btnDokter = new FontAwesome.Sharp.IconButton();
@@ -37,26 +37,26 @@
             panelLogo = new Panel();
             pictureBox1 = new PictureBox();
             panelHeader = new Panel();
-            panel2.SuspendLayout();
+            panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panel2
+            // panelMenu
             // 
-            panel2.AutoScroll = true;
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(btnPembayaran);
-            panel2.Controls.Add(btnRekamMedis);
-            panel2.Controls.Add(btnDokter);
-            panel2.Controls.Add(btnPengguna);
-            panel2.Controls.Add(btnBeranda);
-            panel2.Controls.Add(panelLogo);
-            panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(257, 600);
-            panel2.TabIndex = 1;
+            panelMenu.AutoScroll = true;
+            panelMenu.BackColor = Color.White;
+            panelMenu.Controls.Add(btnPembayaran);
+            panelMenu.Controls.Add(btnRekamMedis);
+            panelMenu.Controls.Add(btnDokter);
+            panelMenu.Controls.Add(btnPengguna);
+            panelMenu.Controls.Add(btnBeranda);
+            panelMenu.Controls.Add(panelLogo);
+            panelMenu.Dock = DockStyle.Left;
+            panelMenu.Location = new Point(0, 0);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Size = new Size(257, 600);
+            panelMenu.TabIndex = 1;
             // 
             // btnPembayaran
             // 
@@ -80,6 +80,7 @@
             btnPembayaran.TextAlign = ContentAlignment.MiddleLeft;
             btnPembayaran.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPembayaran.UseVisualStyleBackColor = false;
+            btnPembayaran.Click += btnPembayaran_Click;
             // 
             // btnRekamMedis
             // 
@@ -103,6 +104,7 @@
             btnRekamMedis.TextAlign = ContentAlignment.MiddleLeft;
             btnRekamMedis.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnRekamMedis.UseVisualStyleBackColor = false;
+            btnRekamMedis.Click += btnRekamMedis_Click;
             // 
             // btnDokter
             // 
@@ -126,6 +128,7 @@
             btnDokter.TextAlign = ContentAlignment.MiddleLeft;
             btnDokter.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDokter.UseVisualStyleBackColor = false;
+            btnDokter.Click += btnDokter_Click;
             // 
             // btnPengguna
             // 
@@ -149,6 +152,7 @@
             btnPengguna.TextAlign = ContentAlignment.MiddleLeft;
             btnPengguna.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPengguna.UseVisualStyleBackColor = false;
+            btnPengguna.Click += btnPengguna_Click;
             // 
             // btnBeranda
             // 
@@ -172,6 +176,7 @@
             btnBeranda.TextAlign = ContentAlignment.MiddleLeft;
             btnBeranda.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBeranda.UseVisualStyleBackColor = false;
+            btnBeranda.Click += btnBeranda_Click;
             // 
             // panelLogo
             // 
@@ -200,27 +205,27 @@
             panelHeader.Size = new Size(743, 48);
             panelHeader.TabIndex = 0;
             // 
-            // frmDashboard
+            // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(241, 244, 254);
             ClientSize = new Size(1000, 600);
             Controls.Add(panelHeader);
-            Controls.Add(panel2);
+            Controls.Add(panelMenu);
             Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmDashboard";
+            Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Dashboard";
-            panel2.ResumeLayout(false);
+            Text = "Beranda";
+            panelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Panel panel2;
+        private Panel panelMenu;
         private Panel panelLogo;
         private PictureBox pictureBox1;
         private Panel panelHeader;
