@@ -59,5 +59,15 @@ namespace RekamMedisKlinik.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LOGO_KLINIK_SMALL_DARK {
+            get {
+                object obj = ResourceManager.GetObject("LOGO KLINIK SMALL DARK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
