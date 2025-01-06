@@ -33,7 +33,7 @@ namespace RekamMedisKlinik
         {
             if (this.password == "adminadmin" && this.email == "admin@gmail.com")
             {
-                new frmDashboard().Show();
+                new FormMenu().Show();
                 this.Hide();
             }
             else
