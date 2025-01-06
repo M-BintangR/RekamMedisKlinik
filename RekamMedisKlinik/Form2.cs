@@ -9,8 +9,8 @@ namespace RekamMedisKlinik
     {
         private IconButton currentBtn;
         private Panel rightBorderBtn;
-        private Color activeColor = Color.FromArgb(231, 246, 255); 
-        private Color defaultColor = Color.FromArgb(4, 63, 98); 
+        private Color activeColor = Color.FromArgb(231, 246, 255);
+        private Color defaultColor = Color.FromArgb(4, 63, 98);
 
         public FormMenu()
         {
@@ -78,6 +78,34 @@ namespace RekamMedisKlinik
         private void btnPembayaran_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, defaultColor);
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMaximalSize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Maximized)
+            {
+                // Jika form dalam keadaan normal, maka ubah menjadi maksimal
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -112,7 +112,7 @@
             // 
             chcBoxShowPassword.AutoSize = true;
             chcBoxShowPassword.Cursor = Cursors.Hand;
-            chcBoxShowPassword.Location = new Point(123, 355);
+            chcBoxShowPassword.Location = new Point(131, 347);
             chcBoxShowPassword.Name = "chcBoxShowPassword";
             chcBoxShowPassword.Size = new Size(128, 21);
             chcBoxShowPassword.TabIndex = 7;
