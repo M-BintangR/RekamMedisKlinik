@@ -83,6 +83,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(216, 28);
             txtEmail.TabIndex = 4;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // txtPassword
             // 
@@ -131,6 +132,7 @@
             btnLogin.TabIndex = 8;
             btnLogin.Text = "Masuk";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // btnCloseLogin
             // 
