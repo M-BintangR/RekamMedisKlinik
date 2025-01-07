@@ -22,6 +22,9 @@ namespace RekamMedisKlinik
 
             // default activated button
             ActivateButton(btnBeranda, defaultColor);
+
+            // default child form
+            openChildForm(new FormChildDashboard());
         }
 
         private void ActivateButton(object senderBtn, Color color)
@@ -57,37 +60,32 @@ namespace RekamMedisKlinik
 
         private void btnBeranda_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildDashboard());
             ActivateButton(sender, defaultColor);
         }
 
         private void btnPengguna_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildPengguna());
             ActivateButton(sender, defaultColor);
         }
 
         private void btnDokter_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildDokter());
             ActivateButton(sender, defaultColor);
         }
 
         private void btnRekamMedis_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildRekamMedis());
             ActivateButton(sender, defaultColor);
         }
 
         private void btnPembayaran_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildPembayaran());
             ActivateButton(sender, defaultColor);
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnMaximalSize_Click(object sender, EventArgs e)
@@ -119,6 +117,31 @@ namespace RekamMedisKlinik
             {
                 this.WindowState = FormWindowState.Normal;
             }
+        }
+
+        private Form acitiveForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (acitiveForm != null)
+                acitiveForm.Close();
+            acitiveForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChildForm.Controls.Add(childForm);
+            panelChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

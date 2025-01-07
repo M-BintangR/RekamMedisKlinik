@@ -77,6 +77,7 @@
             // 
             txtEmail.BackColor = Color.FromArgb(230, 231, 233);
             txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.CharacterCasing = CharacterCasing.Lower;
             txtEmail.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtEmail.Location = new Point(36, 238);
             txtEmail.Multiline = true;
@@ -93,7 +94,7 @@
             txtPassword.Location = new Point(36, 311);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
+            txtPassword.ShortcutsEnabled = false;
             txtPassword.Size = new Size(216, 28);
             txtPassword.TabIndex = 6;
             txtPassword.UseSystemPasswordChar = true;

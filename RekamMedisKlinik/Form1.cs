@@ -7,6 +7,7 @@ namespace RekamMedisKlinik
         public frmLogin()
         {
             InitializeComponent();
+            this.txtPassword.UseSystemPasswordChar = true;
         }
 
         private void label2_Click(object sender, EventArgs e)

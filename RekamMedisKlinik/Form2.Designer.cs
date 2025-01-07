@@ -41,14 +41,14 @@
             pictureBox1 = new PictureBox();
             panelHeader = new Panel();
             panel2 = new Panel();
+            btnMinimized = new FontAwesome.Sharp.IconButton();
             btnClose = new FontAwesome.Sharp.IconButton();
             btnMaximalSize = new FontAwesome.Sharp.IconButton();
             panelInfoUser = new Panel();
             label2 = new Label();
             pictureBox2 = new PictureBox();
             label1 = new Label();
-            panel1 = new Panel();
-            btnMinimized = new FontAwesome.Sharp.IconButton();
+            panelChildForm = new Panel();
             panelMenu.SuspendLayout();
             panel3.SuspendLayout();
             panelLogo.SuspendLayout();
@@ -265,6 +265,19 @@
             panel2.Size = new Size(210, 56);
             panel2.TabIndex = 2;
             // 
+            // btnMinimized
+            // 
+            btnMinimized.IconChar = FontAwesome.Sharp.IconChar.SquareCaretDown;
+            btnMinimized.IconColor = Color.FromArgb(254, 0, 0);
+            btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMinimized.IconSize = 20;
+            btnMinimized.Location = new Point(52, 13);
+            btnMinimized.Name = "btnMinimized";
+            btnMinimized.Size = new Size(30, 30);
+            btnMinimized.TabIndex = 2;
+            btnMinimized.UseVisualStyleBackColor = true;
+            btnMinimized.Click += btnMinimized_Click;
+            // 
             // btnClose
             // 
             btnClose.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
@@ -333,26 +346,13 @@
             label1.Text = "Muhammad Bintang";
             label1.Click += label1_Click;
             // 
-            // panel1
+            // panelChildForm
             // 
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(257, 56);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(743, 544);
-            panel1.TabIndex = 2;
-            // 
-            // btnMinimized
-            // 
-            btnMinimized.IconChar = FontAwesome.Sharp.IconChar.SquareCaretDown;
-            btnMinimized.IconColor = Color.FromArgb(254, 0, 0);
-            btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMinimized.IconSize = 20;
-            btnMinimized.Location = new Point(52, 13);
-            btnMinimized.Name = "btnMinimized";
-            btnMinimized.Size = new Size(30, 30);
-            btnMinimized.TabIndex = 2;
-            btnMinimized.UseVisualStyleBackColor = true;
-            btnMinimized.Click += btnMinimized_Click;
+            panelChildForm.Dock = DockStyle.Fill;
+            panelChildForm.Location = new Point(257, 56);
+            panelChildForm.Name = "panelChildForm";
+            panelChildForm.Size = new Size(743, 544);
+            panelChildForm.TabIndex = 2;
             // 
             // FormMenu
             // 
@@ -360,7 +360,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(241, 244, 254);
             ClientSize = new Size(1000, 600);
-            Controls.Add(panel1);
+            Controls.Add(panelChildForm);
             Controls.Add(panelHeader);
             Controls.Add(panelMenu);
             Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -392,7 +392,7 @@
         private FontAwesome.Sharp.IconButton btnPembayaran;
         private Panel panelInfoUser;
         private PictureBox pictureBox2;
-        private Panel panel1;
+        private Panel panelChildForm;
         private Label label2;
         private Label label1;
         private Panel panel3;
