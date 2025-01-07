@@ -1,10 +1,12 @@
+using RekamMedisKlinik.Properties;
+
 namespace RekamMedisKlinik
 {
-    public partial class frmLogin : Form
+    public partial class FormLogin : Form
     {
         private string email;
         private string password;
-        public frmLogin()
+        public FormLogin()
         {
             InitializeComponent();
             this.txtPassword.UseSystemPasswordChar = true;
@@ -46,7 +48,7 @@ namespace RekamMedisKlinik
 
         private void chcBoxShowPassword_CheckedChanged(object sender, EventArgs e)
         {
-           
+            this.txtPassword.UseSystemPasswordChar = !this.chcBoxShowPassword.Checked;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace RekamMedisKlinik
 {
-    partial class frmLogin
+    partial class FormLogin
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -158,7 +158,7 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
-            // frmLogin
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -177,7 +177,8 @@
             Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(164, 165, 169);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmLogin";
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FROM LOGIN";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

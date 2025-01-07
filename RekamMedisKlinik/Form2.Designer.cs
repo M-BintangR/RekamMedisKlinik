@@ -365,6 +365,7 @@
             Controls.Add(panelMenu);
             Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Beranda";
