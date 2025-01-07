@@ -92,6 +92,7 @@
             // btnAkunSaya
             // 
             btnAkunSaya.BackColor = Color.White;
+            btnAkunSaya.Cursor = Cursors.Hand;
             btnAkunSaya.Dock = DockStyle.Top;
             btnAkunSaya.FlatAppearance.BorderSize = 0;
             btnAkunSaya.FlatStyle = FlatStyle.Flat;
@@ -128,6 +129,7 @@
             // 
             // btnLaporanRekamMedis
             // 
+            btnLaporanRekamMedis.Cursor = Cursors.Hand;
             btnLaporanRekamMedis.Dock = DockStyle.Top;
             btnLaporanRekamMedis.FlatAppearance.BorderSize = 0;
             btnLaporanRekamMedis.FlatStyle = FlatStyle.Flat;
@@ -150,6 +152,7 @@
             // 
             // btnLaporanPembayaran
             // 
+            btnLaporanPembayaran.Cursor = Cursors.Hand;
             btnLaporanPembayaran.Dock = DockStyle.Top;
             btnLaporanPembayaran.FlatAppearance.BorderSize = 0;
             btnLaporanPembayaran.FlatStyle = FlatStyle.Flat;
@@ -172,6 +175,7 @@
             // 
             // btnLaporanDokter
             // 
+            btnLaporanDokter.Cursor = Cursors.Hand;
             btnLaporanDokter.Dock = DockStyle.Top;
             btnLaporanDokter.FlatAppearance.BorderSize = 0;
             btnLaporanDokter.FlatStyle = FlatStyle.Flat;
@@ -195,6 +199,7 @@
             // btnLaporan
             // 
             btnLaporan.BackColor = Color.White;
+            btnLaporan.Cursor = Cursors.Hand;
             btnLaporan.Dock = DockStyle.Top;
             btnLaporan.FlatAppearance.BorderSize = 0;
             btnLaporan.FlatStyle = FlatStyle.Flat;
@@ -219,6 +224,7 @@
             // btnJanjiTemu
             // 
             btnJanjiTemu.BackColor = Color.White;
+            btnJanjiTemu.Cursor = Cursors.Hand;
             btnJanjiTemu.Dock = DockStyle.Top;
             btnJanjiTemu.FlatAppearance.BorderSize = 0;
             btnJanjiTemu.FlatStyle = FlatStyle.Flat;
@@ -234,7 +240,7 @@
             btnJanjiTemu.Padding = new Padding(10, 0, 0, 0);
             btnJanjiTemu.Size = new Size(240, 42);
             btnJanjiTemu.TabIndex = 9;
-            btnJanjiTemu.Text = "Janji Temu";
+            btnJanjiTemu.Text = "Janji Temu Pasien";
             btnJanjiTemu.TextAlign = ContentAlignment.MiddleLeft;
             btnJanjiTemu.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnJanjiTemu.UseVisualStyleBackColor = false;
@@ -253,6 +259,7 @@
             // iconButton1
             // 
             iconButton1.BackColor = Color.FromArgb(254, 0, 0);
+            iconButton1.Cursor = Cursors.Hand;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.Font = new Font("Arial", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             iconButton1.ForeColor = Color.White;
@@ -269,10 +276,12 @@
             iconButton1.TabIndex = 8;
             iconButton1.Text = "Keluar";
             iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += iconButton1_Click;
             // 
             // btnPembayaran
             // 
             btnPembayaran.BackColor = Color.White;
+            btnPembayaran.Cursor = Cursors.Hand;
             btnPembayaran.Dock = DockStyle.Top;
             btnPembayaran.FlatAppearance.BorderSize = 0;
             btnPembayaran.FlatStyle = FlatStyle.Flat;
@@ -297,6 +306,7 @@
             // btnRekamMedis
             // 
             btnRekamMedis.BackColor = Color.White;
+            btnRekamMedis.Cursor = Cursors.Hand;
             btnRekamMedis.Dock = DockStyle.Top;
             btnRekamMedis.FlatAppearance.BorderSize = 0;
             btnRekamMedis.FlatStyle = FlatStyle.Flat;
@@ -321,6 +331,7 @@
             // btnDokter
             // 
             btnDokter.BackColor = Color.White;
+            btnDokter.Cursor = Cursors.Hand;
             btnDokter.Dock = DockStyle.Top;
             btnDokter.FlatAppearance.BorderSize = 0;
             btnDokter.FlatStyle = FlatStyle.Flat;
@@ -345,6 +356,7 @@
             // btnPengguna
             // 
             btnPengguna.BackColor = Color.White;
+            btnPengguna.Cursor = Cursors.Hand;
             btnPengguna.Dock = DockStyle.Top;
             btnPengguna.FlatAppearance.BorderSize = 0;
             btnPengguna.FlatStyle = FlatStyle.Flat;
@@ -369,6 +381,7 @@
             // btnBeranda
             // 
             btnBeranda.BackColor = Color.White;
+            btnBeranda.Cursor = Cursors.Hand;
             btnBeranda.Dock = DockStyle.Top;
             btnBeranda.FlatAppearance.BorderSize = 0;
             btnBeranda.FlatStyle = FlatStyle.Flat;
@@ -402,7 +415,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.LOGO_KLINIK_SMALL_DARK;
-            pictureBox1.Location = new Point(14, 17);
+            pictureBox1.Location = new Point(6, 17);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(228, 63);
             pictureBox1.TabIndex = 0;
@@ -432,6 +445,7 @@
             // 
             // btnMinimized
             // 
+            btnMinimized.Cursor = Cursors.Hand;
             btnMinimized.IconChar = FontAwesome.Sharp.IconChar.SquareCaretDown;
             btnMinimized.IconColor = Color.FromArgb(254, 0, 0);
             btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -445,6 +459,7 @@
             // 
             // btnClose
             // 
+            btnClose.Cursor = Cursors.Hand;
             btnClose.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
             btnClose.IconColor = Color.FromArgb(254, 0, 0);
             btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -458,6 +473,7 @@
             // 
             // btnMaximalSize
             // 
+            btnMaximalSize.Cursor = Cursors.Hand;
             btnMaximalSize.IconChar = FontAwesome.Sharp.IconChar.Maximize;
             btnMaximalSize.IconColor = Color.FromArgb(254, 0, 0);
             btnMaximalSize.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -513,6 +529,7 @@
             // 
             // panelChildForm
             // 
+            panelChildForm.AutoScroll = true;
             panelChildForm.Dock = DockStyle.Fill;
             panelChildForm.Location = new Point(257, 56);
             panelChildForm.Name = "panelChildForm";

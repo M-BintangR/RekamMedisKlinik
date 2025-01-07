@@ -47,7 +47,7 @@ namespace RekamMedisKlinik
 
                 // border right button menu                   
                 rightBorderBtn.BackColor = color;
-                rightBorderBtn.Location = new Point(panelMenu.Width -5, currentBtn.Location.Y);
+                rightBorderBtn.Location = new Point(panelMenu.Width - 5, currentBtn.Location.Y);
                 rightBorderBtn.Visible = true;
                 rightBorderBtn.BringToFront();
             }
@@ -61,7 +61,7 @@ namespace RekamMedisKlinik
                 this.panelSubmenuLaporan.Visible = false;
                 if (this.WindowState == FormWindowState.Normal)
                     this.panelMenu.AutoScroll = false;
-                    this.panelMenu.Width = originalPanelWidth;
+                this.panelMenu.Width = originalPanelWidth;
             }
         }
 
@@ -77,14 +77,16 @@ namespace RekamMedisKlinik
 
                 if (this.WindowState == FormWindowState.Normal)
                     this.panelMenu.Width += 18;
-                    this.panelMenu.AutoScroll = true;
+                this.panelMenu.AutoScroll = true;
 
-            }else{
+            }
+            else
+            {
                 subMenu.Visible = false;
 
-                if(this.WindowState == FormWindowState.Normal)
+                if (this.WindowState == FormWindowState.Normal)
                     this.panelMenu.AutoScroll = false;
-                    this.panelMenu.Width = originalPanelWidth;
+                this.panelMenu.Width = originalPanelWidth;
             }
         }
 
@@ -227,6 +229,12 @@ namespace RekamMedisKlinik
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            this.Close();
         }
     }
 }

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
+    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
   </ItemGroup>
 
   <ItemGroup>
