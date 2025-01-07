@@ -48,6 +48,7 @@
             pictureBox2 = new PictureBox();
             label1 = new Label();
             panel1 = new Panel();
+            btnMinimized = new FontAwesome.Sharp.IconButton();
             panelMenu.SuspendLayout();
             panel3.SuspendLayout();
             panelLogo.SuspendLayout();
@@ -255,6 +256,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btnMinimized);
             panel2.Controls.Add(btnClose);
             panel2.Controls.Add(btnMaximalSize);
             panel2.Dock = DockStyle.Left;
@@ -269,7 +271,7 @@
             btnClose.IconColor = Color.FromArgb(254, 0, 0);
             btnClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnClose.IconSize = 20;
-            btnClose.Location = new Point(53, 14);
+            btnClose.Location = new Point(87, 13);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(30, 30);
             btnClose.TabIndex = 1;
@@ -282,7 +284,7 @@
             btnMaximalSize.IconColor = Color.FromArgb(254, 0, 0);
             btnMaximalSize.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMaximalSize.IconSize = 20;
-            btnMaximalSize.Location = new Point(17, 14);
+            btnMaximalSize.Location = new Point(17, 13);
             btnMaximalSize.Name = "btnMaximalSize";
             btnMaximalSize.Size = new Size(30, 30);
             btnMaximalSize.TabIndex = 0;
@@ -339,6 +341,19 @@
             panel1.Size = new Size(743, 544);
             panel1.TabIndex = 2;
             // 
+            // btnMinimized
+            // 
+            btnMinimized.IconChar = FontAwesome.Sharp.IconChar.SquareCaretDown;
+            btnMinimized.IconColor = Color.FromArgb(254, 0, 0);
+            btnMinimized.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMinimized.IconSize = 20;
+            btnMinimized.Location = new Point(52, 13);
+            btnMinimized.Name = "btnMinimized";
+            btnMinimized.Size = new Size(30, 30);
+            btnMinimized.TabIndex = 2;
+            btnMinimized.UseVisualStyleBackColor = true;
+            btnMinimized.Click += btnMinimized_Click;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
@@ -385,5 +400,6 @@
         private Panel panel2;
         private FontAwesome.Sharp.IconButton btnMaximalSize;
         private FontAwesome.Sharp.IconButton btnClose;
+        private FontAwesome.Sharp.IconButton btnMinimized;
     }
 }

@@ -20,7 +20,7 @@ namespace RekamMedisKlinik
             rightBorderBtn.Size = new Size(5, 42);
             panelMenu.Controls.Add(rightBorderBtn);
 
-            // Default Activate Button
+            // default activated button
             ActivateButton(btnBeranda, defaultColor);
         }
 
@@ -30,13 +30,13 @@ namespace RekamMedisKlinik
             {
                 DisableButton();
 
-                // Current Button 
+                // current button 
                 currentBtn = (IconButton)senderBtn;
                 currentBtn.BackColor = activeColor;
                 currentBtn.ForeColor = color;
                 currentBtn.IconColor = color;
 
-                // Border Rigth Button Menu                    
+                // border right button menu                   
                 rightBorderBtn.BackColor = color;
                 rightBorderBtn.Location = new Point(panelMenu.Width - 5, currentBtn.Location.Y);
                 rightBorderBtn.Visible = true;
@@ -46,7 +46,7 @@ namespace RekamMedisKlinik
 
         private void DisableButton()
         {
-            // Disabled Button 
+            // disabled button 
             if (currentBtn != null)
             {
                 currentBtn.BackColor = Color.Transparent;
@@ -94,7 +94,7 @@ namespace RekamMedisKlinik
         {
             if (this.WindowState != FormWindowState.Maximized)
             {
-                // Jika form dalam keadaan normal, maka ubah menjadi maksimal
+                // should to able maximized if windows state not maximized
                 this.WindowState = FormWindowState.Maximized;
             }
             else
@@ -106,6 +106,19 @@ namespace RekamMedisKlinik
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            if(this.WindowState != FormWindowState.Minimized)
+            {
+                // should to able minimized if windows state not minimized
+                this.WindowState = FormWindowState.Minimized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
         }
     }
 }
