@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             panelMenu = new Panel();
+            btnAkunSaya = new FontAwesome.Sharp.IconButton();
+            panelSubmenuLaporan = new Panel();
+            btnLaporanRekamMedis = new FontAwesome.Sharp.IconButton();
+            btnLaporanPembayaran = new FontAwesome.Sharp.IconButton();
+            btnLaporanDokter = new FontAwesome.Sharp.IconButton();
+            btnLaporan = new FontAwesome.Sharp.IconButton();
+            btnJanjiTemu = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             btnPembayaran = new FontAwesome.Sharp.IconButton();
@@ -50,6 +57,7 @@
             label1 = new Label();
             panelChildForm = new Panel();
             panelMenu.SuspendLayout();
+            panelSubmenuLaporan.SuspendLayout();
             panel3.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -62,7 +70,12 @@
             // panelMenu
             // 
             panelMenu.AutoScroll = true;
+            panelMenu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panelMenu.BackColor = Color.White;
+            panelMenu.Controls.Add(btnAkunSaya);
+            panelMenu.Controls.Add(panelSubmenuLaporan);
+            panelMenu.Controls.Add(btnLaporan);
+            panelMenu.Controls.Add(btnJanjiTemu);
             panelMenu.Controls.Add(panel3);
             panelMenu.Controls.Add(btnPembayaran);
             panelMenu.Controls.Add(btnRekamMedis);
@@ -76,13 +89,165 @@
             panelMenu.Size = new Size(257, 600);
             panelMenu.TabIndex = 1;
             // 
+            // btnAkunSaya
+            // 
+            btnAkunSaya.BackColor = Color.White;
+            btnAkunSaya.Dock = DockStyle.Top;
+            btnAkunSaya.FlatAppearance.BorderSize = 0;
+            btnAkunSaya.FlatStyle = FlatStyle.Flat;
+            btnAkunSaya.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAkunSaya.ForeColor = Color.FromArgb(4, 63, 98);
+            btnAkunSaya.IconChar = FontAwesome.Sharp.IconChar.Unlock;
+            btnAkunSaya.IconColor = Color.FromArgb(4, 63, 98);
+            btnAkunSaya.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAkunSaya.IconSize = 32;
+            btnAkunSaya.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAkunSaya.Location = new Point(0, 519);
+            btnAkunSaya.Name = "btnAkunSaya";
+            btnAkunSaya.Padding = new Padding(10, 0, 0, 0);
+            btnAkunSaya.Size = new Size(240, 42);
+            btnAkunSaya.TabIndex = 12;
+            btnAkunSaya.Text = "Akun Saya";
+            btnAkunSaya.TextAlign = ContentAlignment.MiddleLeft;
+            btnAkunSaya.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAkunSaya.UseVisualStyleBackColor = false;
+            btnAkunSaya.Click += btnAkunSaya_Click;
+            // 
+            // panelSubmenuLaporan
+            // 
+            panelSubmenuLaporan.AutoScroll = true;
+            panelSubmenuLaporan.BackColor = SystemColors.ButtonFace;
+            panelSubmenuLaporan.Controls.Add(btnLaporanRekamMedis);
+            panelSubmenuLaporan.Controls.Add(btnLaporanPembayaran);
+            panelSubmenuLaporan.Controls.Add(btnLaporanDokter);
+            panelSubmenuLaporan.Dock = DockStyle.Top;
+            panelSubmenuLaporan.Location = new Point(0, 390);
+            panelSubmenuLaporan.Name = "panelSubmenuLaporan";
+            panelSubmenuLaporan.Size = new Size(240, 129);
+            panelSubmenuLaporan.TabIndex = 11;
+            // 
+            // btnLaporanRekamMedis
+            // 
+            btnLaporanRekamMedis.Dock = DockStyle.Top;
+            btnLaporanRekamMedis.FlatAppearance.BorderSize = 0;
+            btnLaporanRekamMedis.FlatStyle = FlatStyle.Flat;
+            btnLaporanRekamMedis.Font = new Font("Arial", 11.25F, FontStyle.Bold);
+            btnLaporanRekamMedis.ForeColor = Color.FromArgb(4, 63, 98);
+            btnLaporanRekamMedis.IconChar = FontAwesome.Sharp.IconChar.O;
+            btnLaporanRekamMedis.IconColor = Color.Black;
+            btnLaporanRekamMedis.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLaporanRekamMedis.IconSize = 10;
+            btnLaporanRekamMedis.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLaporanRekamMedis.Location = new Point(0, 84);
+            btnLaporanRekamMedis.Name = "btnLaporanRekamMedis";
+            btnLaporanRekamMedis.Padding = new Padding(45, 0, 0, 0);
+            btnLaporanRekamMedis.Size = new Size(240, 42);
+            btnLaporanRekamMedis.TabIndex = 2;
+            btnLaporanRekamMedis.Text = "Rekam Medis";
+            btnLaporanRekamMedis.TextAlign = ContentAlignment.MiddleLeft;
+            btnLaporanRekamMedis.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLaporanRekamMedis.UseVisualStyleBackColor = true;
+            // 
+            // btnLaporanPembayaran
+            // 
+            btnLaporanPembayaran.Dock = DockStyle.Top;
+            btnLaporanPembayaran.FlatAppearance.BorderSize = 0;
+            btnLaporanPembayaran.FlatStyle = FlatStyle.Flat;
+            btnLaporanPembayaran.Font = new Font("Arial", 11.25F, FontStyle.Bold);
+            btnLaporanPembayaran.ForeColor = Color.FromArgb(4, 63, 98);
+            btnLaporanPembayaran.IconChar = FontAwesome.Sharp.IconChar.O;
+            btnLaporanPembayaran.IconColor = Color.Black;
+            btnLaporanPembayaran.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLaporanPembayaran.IconSize = 10;
+            btnLaporanPembayaran.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLaporanPembayaran.Location = new Point(0, 42);
+            btnLaporanPembayaran.Name = "btnLaporanPembayaran";
+            btnLaporanPembayaran.Padding = new Padding(45, 0, 0, 0);
+            btnLaporanPembayaran.Size = new Size(240, 42);
+            btnLaporanPembayaran.TabIndex = 1;
+            btnLaporanPembayaran.Text = "Riwayat Pembayaran";
+            btnLaporanPembayaran.TextAlign = ContentAlignment.MiddleLeft;
+            btnLaporanPembayaran.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLaporanPembayaran.UseVisualStyleBackColor = true;
+            // 
+            // btnLaporanDokter
+            // 
+            btnLaporanDokter.Dock = DockStyle.Top;
+            btnLaporanDokter.FlatAppearance.BorderSize = 0;
+            btnLaporanDokter.FlatStyle = FlatStyle.Flat;
+            btnLaporanDokter.Font = new Font("Arial", 11.25F, FontStyle.Bold);
+            btnLaporanDokter.ForeColor = Color.FromArgb(4, 63, 98);
+            btnLaporanDokter.IconChar = FontAwesome.Sharp.IconChar.O;
+            btnLaporanDokter.IconColor = Color.Black;
+            btnLaporanDokter.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLaporanDokter.IconSize = 10;
+            btnLaporanDokter.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLaporanDokter.Location = new Point(0, 0);
+            btnLaporanDokter.Name = "btnLaporanDokter";
+            btnLaporanDokter.Padding = new Padding(45, 0, 0, 0);
+            btnLaporanDokter.Size = new Size(240, 42);
+            btnLaporanDokter.TabIndex = 0;
+            btnLaporanDokter.Text = "Dokter";
+            btnLaporanDokter.TextAlign = ContentAlignment.MiddleLeft;
+            btnLaporanDokter.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLaporanDokter.UseVisualStyleBackColor = true;
+            // 
+            // btnLaporan
+            // 
+            btnLaporan.BackColor = Color.White;
+            btnLaporan.Dock = DockStyle.Top;
+            btnLaporan.FlatAppearance.BorderSize = 0;
+            btnLaporan.FlatStyle = FlatStyle.Flat;
+            btnLaporan.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLaporan.ForeColor = Color.FromArgb(4, 63, 98);
+            btnLaporan.IconChar = FontAwesome.Sharp.IconChar.Print;
+            btnLaporan.IconColor = Color.FromArgb(4, 63, 98);
+            btnLaporan.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnLaporan.IconSize = 32;
+            btnLaporan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLaporan.Location = new Point(0, 348);
+            btnLaporan.Name = "btnLaporan";
+            btnLaporan.Padding = new Padding(10, 0, 0, 0);
+            btnLaporan.Size = new Size(240, 42);
+            btnLaporan.TabIndex = 10;
+            btnLaporan.Text = "Laporan";
+            btnLaporan.TextAlign = ContentAlignment.MiddleLeft;
+            btnLaporan.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLaporan.UseVisualStyleBackColor = false;
+            btnLaporan.Click += btnLaporan_Click;
+            // 
+            // btnJanjiTemu
+            // 
+            btnJanjiTemu.BackColor = Color.White;
+            btnJanjiTemu.Dock = DockStyle.Top;
+            btnJanjiTemu.FlatAppearance.BorderSize = 0;
+            btnJanjiTemu.FlatStyle = FlatStyle.Flat;
+            btnJanjiTemu.Font = new Font("Arial", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnJanjiTemu.ForeColor = Color.FromArgb(4, 63, 98);
+            btnJanjiTemu.IconChar = FontAwesome.Sharp.IconChar.UserClock;
+            btnJanjiTemu.IconColor = Color.FromArgb(4, 63, 98);
+            btnJanjiTemu.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnJanjiTemu.IconSize = 32;
+            btnJanjiTemu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnJanjiTemu.Location = new Point(0, 306);
+            btnJanjiTemu.Name = "btnJanjiTemu";
+            btnJanjiTemu.Padding = new Padding(10, 0, 0, 0);
+            btnJanjiTemu.Size = new Size(240, 42);
+            btnJanjiTemu.TabIndex = 9;
+            btnJanjiTemu.Text = "Janji Temu";
+            btnJanjiTemu.TextAlign = ContentAlignment.MiddleLeft;
+            btnJanjiTemu.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnJanjiTemu.UseVisualStyleBackColor = false;
+            btnJanjiTemu.Click += btnJanjiTemu_Click;
+            // 
             // panel3
             // 
+            panel3.AutoScroll = true;
             panel3.Controls.Add(iconButton1);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 495);
+            panel3.Location = new Point(0, 561);
             panel3.Name = "panel3";
-            panel3.Size = new Size(257, 105);
+            panel3.Size = new Size(240, 105);
             panel3.TabIndex = 8;
             // 
             // iconButton1
@@ -121,7 +286,7 @@
             btnPembayaran.Location = new Point(0, 264);
             btnPembayaran.Name = "btnPembayaran";
             btnPembayaran.Padding = new Padding(10, 0, 0, 0);
-            btnPembayaran.Size = new Size(257, 42);
+            btnPembayaran.Size = new Size(240, 42);
             btnPembayaran.TabIndex = 7;
             btnPembayaran.Text = "Pembayaran";
             btnPembayaran.TextAlign = ContentAlignment.MiddleLeft;
@@ -145,7 +310,7 @@
             btnRekamMedis.Location = new Point(0, 222);
             btnRekamMedis.Name = "btnRekamMedis";
             btnRekamMedis.Padding = new Padding(10, 0, 0, 0);
-            btnRekamMedis.Size = new Size(257, 42);
+            btnRekamMedis.Size = new Size(240, 42);
             btnRekamMedis.TabIndex = 6;
             btnRekamMedis.Text = "Rekam Medis";
             btnRekamMedis.TextAlign = ContentAlignment.MiddleLeft;
@@ -169,7 +334,7 @@
             btnDokter.Location = new Point(0, 180);
             btnDokter.Name = "btnDokter";
             btnDokter.Padding = new Padding(10, 0, 0, 0);
-            btnDokter.Size = new Size(257, 42);
+            btnDokter.Size = new Size(240, 42);
             btnDokter.TabIndex = 5;
             btnDokter.Text = "Dokter";
             btnDokter.TextAlign = ContentAlignment.MiddleLeft;
@@ -193,7 +358,7 @@
             btnPengguna.Location = new Point(0, 138);
             btnPengguna.Name = "btnPengguna";
             btnPengguna.Padding = new Padding(10, 0, 0, 0);
-            btnPengguna.Size = new Size(257, 42);
+            btnPengguna.Size = new Size(240, 42);
             btnPengguna.TabIndex = 4;
             btnPengguna.Text = "Pengguna";
             btnPengguna.TextAlign = ContentAlignment.MiddleLeft;
@@ -217,7 +382,7 @@
             btnBeranda.Location = new Point(0, 96);
             btnBeranda.Name = "btnBeranda";
             btnBeranda.Padding = new Padding(10, 0, 0, 0);
-            btnBeranda.Size = new Size(257, 42);
+            btnBeranda.Size = new Size(240, 42);
             btnBeranda.TabIndex = 3;
             btnBeranda.Text = "Beranda";
             btnBeranda.TextAlign = ContentAlignment.MiddleLeft;
@@ -231,7 +396,7 @@
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(257, 96);
+            panelLogo.Size = new Size(240, 96);
             panelLogo.TabIndex = 2;
             // 
             // pictureBox1
@@ -370,6 +535,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Beranda";
             panelMenu.ResumeLayout(false);
+            panelSubmenuLaporan.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -402,5 +568,12 @@
         private FontAwesome.Sharp.IconButton btnMaximalSize;
         private FontAwesome.Sharp.IconButton btnClose;
         private FontAwesome.Sharp.IconButton btnMinimized;
+        private Panel panelSubmenuLaporan;
+        private FontAwesome.Sharp.IconButton btnLaporan;
+        private FontAwesome.Sharp.IconButton btnJanjiTemu;
+        private FontAwesome.Sharp.IconButton btnLaporanDokter;
+        private FontAwesome.Sharp.IconButton btnLaporanPembayaran;
+        private FontAwesome.Sharp.IconButton btnAkunSaya;
+        private FontAwesome.Sharp.IconButton btnLaporanRekamMedis;
     }
 }
