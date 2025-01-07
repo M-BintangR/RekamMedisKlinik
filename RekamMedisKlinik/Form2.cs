@@ -9,19 +9,28 @@ namespace RekamMedisKlinik
     {
         private IconButton currentBtn;
         private Panel rightBorderBtn;
-        private Color activeColor = Color.FromArgb(231, 246, 255); 
-        private Color defaultColor = Color.FromArgb(4, 63, 98); 
+        private Color activeColor = Color.FromArgb(231, 246, 255);
+        private Color defaultColor = Color.FromArgb(4, 63, 98);
+        private int originalPanelWidth;
 
         public FormMenu()
         {
             InitializeComponent();
 
+            originalPanelWidth = this.panelMenu.Width;
             rightBorderBtn = new Panel();
             rightBorderBtn.Size = new Size(5, 42);
             panelMenu.Controls.Add(rightBorderBtn);
 
-            // Default Activate Button
+            // default activated button
             ActivateButton(btnBeranda, defaultColor);
+
+            // default child form
+            openChildForm(new FormChildDashboard());
+
+            // default close submenus
+            this.panelSubmenuLaporan.Visible = false;
+            this.panelMenu.HorizontalScroll.Visible = false;
         }
 
         private void ActivateButton(object senderBtn, Color color)
@@ -30,23 +39,58 @@ namespace RekamMedisKlinik
             {
                 DisableButton();
 
-                // Current Button 
+                // current button 
                 currentBtn = (IconButton)senderBtn;
                 currentBtn.BackColor = activeColor;
                 currentBtn.ForeColor = color;
                 currentBtn.IconColor = color;
 
-                // Border Rigth Button Menu                    
+                // border right button menu                   
                 rightBorderBtn.BackColor = color;
-                rightBorderBtn.Location = new Point(panelMenu.Width - 5, currentBtn.Location.Y);
+                rightBorderBtn.Location = new Point(panelMenu.Width -5, currentBtn.Location.Y);
                 rightBorderBtn.Visible = true;
                 rightBorderBtn.BringToFront();
             }
         }
 
+        //sub menu method system
+        private void HideSubMenu()
+        {
+            if (this.panelSubmenuLaporan.Visible)
+            {
+                this.panelSubmenuLaporan.Visible = false;
+                if (this.WindowState == FormWindowState.Normal)
+                    this.panelMenu.AutoScroll = false;
+                    this.panelMenu.Width = originalPanelWidth;
+            }
+        }
+
+
+        // activate system method
+        private void ShowSubMenu(Panel subMenu)
+        {
+            if (!subMenu.Visible)
+            {
+                HideSubMenu();
+                subMenu.Visible = true;
+                subMenu.BackColor = Color.FromArgb(242, 255, 222);
+
+                if (this.WindowState == FormWindowState.Normal)
+                    this.panelMenu.Width += 18;
+                    this.panelMenu.AutoScroll = true;
+
+            }else{
+                subMenu.Visible = false;
+
+                if(this.WindowState == FormWindowState.Normal)
+                    this.panelMenu.AutoScroll = false;
+                    this.panelMenu.Width = originalPanelWidth;
+            }
+        }
+
         private void DisableButton()
         {
-            // Disabled Button 
+            // disabled button 
             if (currentBtn != null)
             {
                 currentBtn.BackColor = Color.Transparent;
@@ -55,29 +99,134 @@ namespace RekamMedisKlinik
             }
         }
 
+
+        // sidebar method handle click
         private void btnBeranda_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildDashboard());
             ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
         }
 
         private void btnPengguna_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildPengguna());
             ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
         }
 
         private void btnDokter_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildDokter());
             ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
         }
 
         private void btnRekamMedis_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildRekamMedis());
             ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
         }
 
         private void btnPembayaran_Click(object sender, EventArgs e)
         {
+            openChildForm(new FormChildPembayaran());
             ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
+        }
+
+        private void btnLaporan_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, defaultColor);
+            // showing sub menus report
+            ShowSubMenu(this.panelSubmenuLaporan);
+        }
+
+        private void btnJanjiTemu_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
+        }
+
+        private void btnAkunSaya_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, defaultColor);
+
+            // should be able to hide sub menus;
+            HideSubMenu();
+        }
+
+        // button header system method
+        private void btnMaximalSize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Maximized)
+            {
+                // should to able maximized if windows state not maximized
+                this.WindowState = FormWindowState.Maximized;
+                this.panelMenu.Width = originalPanelWidth;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Minimized)
+            {
+                // should to able minimized if windows state not minimized
+                this.WindowState = FormWindowState.Minimized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+
+        // rendering component child system method
+        private Form acitiveForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (acitiveForm != null)
+                acitiveForm.Close();
+            acitiveForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChildForm.Controls.Add(childForm);
+            panelChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace RekamMedisKlinik
 {
-    partial class frmLogin
+    partial class FormLogin
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -77,6 +77,7 @@
             // 
             txtEmail.BackColor = Color.FromArgb(230, 231, 233);
             txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.CharacterCasing = CharacterCasing.Lower;
             txtEmail.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtEmail.Location = new Point(36, 238);
             txtEmail.Multiline = true;
@@ -93,7 +94,7 @@
             txtPassword.Location = new Point(36, 311);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
+            txtPassword.ShortcutsEnabled = false;
             txtPassword.Size = new Size(216, 28);
             txtPassword.TabIndex = 6;
             txtPassword.UseSystemPasswordChar = true;
@@ -112,7 +113,7 @@
             // 
             chcBoxShowPassword.AutoSize = true;
             chcBoxShowPassword.Cursor = Cursors.Hand;
-            chcBoxShowPassword.Location = new Point(123, 355);
+            chcBoxShowPassword.Location = new Point(131, 347);
             chcBoxShowPassword.Name = "chcBoxShowPassword";
             chcBoxShowPassword.Size = new Size(128, 21);
             chcBoxShowPassword.TabIndex = 7;
@@ -157,7 +158,7 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
-            // frmLogin
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -176,7 +177,8 @@
             Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(164, 165, 169);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmLogin";
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FROM LOGIN";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
