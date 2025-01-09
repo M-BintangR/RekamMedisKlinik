@@ -36,6 +36,13 @@
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            previewGambar = new PictureBox();
+            label20 = new Label();
+            label21 = new Label();
+            textBox1 = new TextBox();
+            label16 = new Label();
+            label19 = new Label();
+            txtNamaPasien = new TextBox();
             label15 = new Label();
             label18 = new Label();
             txtHarga = new TextBox();
@@ -53,29 +60,22 @@
             btnBayar = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
             panel3 = new Panel();
+            panel4 = new Panel();
+            label8 = new Label();
+            label6 = new Label();
             label12 = new Label();
             txtSearch = new TextBox();
             dtGridRekamMedis = new DataGridView();
             label13 = new Label();
             label14 = new Label();
-            panel4 = new Panel();
-            label6 = new Label();
-            label8 = new Label();
-            label16 = new Label();
-            label19 = new Label();
-            txtNamaPasien = new TextBox();
-            label20 = new Label();
-            label21 = new Label();
-            textBox1 = new TextBox();
-            previewGambar = new PictureBox();
             panelChildTopRekamMedis.SuspendLayout();
             panelChildTopLeftRekamMedis.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).BeginInit();
-            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)previewGambar).BeginInit();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).BeginInit();
             SuspendLayout();
             // 
             // panelChildTopRekamMedis
@@ -172,6 +172,82 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(532, 544);
             panel2.TabIndex = 15;
+            // 
+            // previewGambar
+            // 
+            previewGambar.Image = (Image)resources.GetObject("previewGambar.Image");
+            previewGambar.Location = new Point(212, 60);
+            previewGambar.Name = "previewGambar";
+            previewGambar.Size = new Size(89, 84);
+            previewGambar.SizeMode = PictureBoxSizeMode.Zoom;
+            previewGambar.TabIndex = 41;
+            previewGambar.TabStop = false;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.ForeColor = Color.FromArgb(252, 0, 0);
+            label20.Location = new Point(115, 178);
+            label20.Name = "label20";
+            label20.Size = new Size(13, 13);
+            label20.TabIndex = 40;
+            label20.Text = "*";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
+            label21.ForeColor = Color.FromArgb(4, 63, 98);
+            label21.Location = new Point(26, 174);
+            label21.Name = "label21";
+            label21.Size = new Size(90, 17);
+            label21.TabIndex = 39;
+            label21.Text = "Nama Dokter";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(230, 231, 233);
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(27, 203);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(224, 33);
+            textBox1.TabIndex = 38;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.ForeColor = Color.FromArgb(252, 0, 0);
+            label16.Location = new Point(368, 179);
+            label16.Name = "label16";
+            label16.Size = new Size(13, 13);
+            label16.TabIndex = 37;
+            label16.Text = "*";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
+            label19.ForeColor = Color.FromArgb(4, 63, 98);
+            label19.Location = new Point(280, 174);
+            label19.Name = "label19";
+            label19.Size = new Size(88, 17);
+            label19.TabIndex = 36;
+            label19.Text = "Nama Pasien";
+            // 
+            // txtNamaPasien
+            // 
+            txtNamaPasien.BackColor = Color.FromArgb(230, 231, 233);
+            txtNamaPasien.BorderStyle = BorderStyle.None;
+            txtNamaPasien.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNamaPasien.Location = new Point(281, 203);
+            txtNamaPasien.Multiline = true;
+            txtNamaPasien.Name = "txtNamaPasien";
+            txtNamaPasien.Size = new Size(224, 33);
+            txtNamaPasien.TabIndex = 35;
             // 
             // label15
             // 
@@ -380,6 +456,38 @@
             panel3.Size = new Size(500, 405);
             panel3.TabIndex = 14;
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(126, 209, 7);
+            panel4.Controls.Add(label8);
+            panel4.Controls.Add(label6);
+            panel4.Location = new Point(17, 77);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(455, 67);
+            panel4.TabIndex = 42;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(15, 33);
+            label8.Name = "label8";
+            label8.Size = new Size(362, 13);
+            label8.TabIndex = 43;
+            label8.Text = "Silahkan pilih pasien terlebih dahulu, untuk melakukan pembayaran";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(13, 12);
+            label6.Name = "label6";
+            label6.Size = new Size(46, 21);
+            label6.TabIndex = 43;
+            label6.Text = "Info!";
+            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -434,114 +542,6 @@
             label14.TabIndex = 2;
             label14.Text = "Pilih Pasien";
             // 
-            // panel4
-            // 
-            panel4.BackColor = Color.FromArgb(126, 209, 7);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(label6);
-            panel4.Location = new Point(17, 77);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(455, 67);
-            panel4.TabIndex = 42;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(13, 12);
-            label6.Name = "label6";
-            label6.Size = new Size(46, 21);
-            label6.TabIndex = 43;
-            label6.Text = "Info!";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(15, 33);
-            label8.Name = "label8";
-            label8.Size = new Size(362, 13);
-            label8.TabIndex = 43;
-            label8.Text = "Silahkan pilih pasien terlebih dahulu, untuk melakukan pembayaran";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.FromArgb(252, 0, 0);
-            label16.Location = new Point(368, 179);
-            label16.Name = "label16";
-            label16.Size = new Size(13, 13);
-            label16.TabIndex = 37;
-            label16.Text = "*";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
-            label19.ForeColor = Color.FromArgb(4, 63, 98);
-            label19.Location = new Point(280, 174);
-            label19.Name = "label19";
-            label19.Size = new Size(88, 17);
-            label19.TabIndex = 36;
-            label19.Text = "Nama Pasien";
-            // 
-            // txtNamaPasien
-            // 
-            txtNamaPasien.BackColor = Color.FromArgb(230, 231, 233);
-            txtNamaPasien.BorderStyle = BorderStyle.None;
-            txtNamaPasien.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtNamaPasien.Location = new Point(281, 203);
-            txtNamaPasien.Multiline = true;
-            txtNamaPasien.Name = "txtNamaPasien";
-            txtNamaPasien.Size = new Size(224, 33);
-            txtNamaPasien.TabIndex = 35;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.FromArgb(252, 0, 0);
-            label20.Location = new Point(115, 178);
-            label20.Name = "label20";
-            label20.Size = new Size(13, 13);
-            label20.TabIndex = 40;
-            label20.Text = "*";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
-            label21.ForeColor = Color.FromArgb(4, 63, 98);
-            label21.Location = new Point(26, 174);
-            label21.Name = "label21";
-            label21.Size = new Size(90, 17);
-            label21.TabIndex = 39;
-            label21.Text = "Nama Dokter";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.FromArgb(230, 231, 233);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(27, 203);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(224, 33);
-            textBox1.TabIndex = 38;
-            // 
-            // previewGambar
-            // 
-            previewGambar.Image = (Image)resources.GetObject("previewGambar.Image");
-            previewGambar.Location = new Point(212, 60);
-            previewGambar.Name = "previewGambar";
-            previewGambar.Size = new Size(89, 84);
-            previewGambar.SizeMode = PictureBoxSizeMode.Zoom;
-            previewGambar.TabIndex = 41;
-            previewGambar.TabStop = false;
-            // 
             // FormChildPembayaran
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -554,18 +554,19 @@
             Name = "FormChildPembayaran";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form Child Pembayaran";
+            Load += FormChildPembayaran_Load;
             panelChildTopRekamMedis.ResumeLayout(false);
             panelChildTopLeftRekamMedis.ResumeLayout(false);
             panelChildTopLeftRekamMedis.PerformLayout();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)previewGambar).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)previewGambar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).EndInit();
             ResumeLayout(false);
         }
 

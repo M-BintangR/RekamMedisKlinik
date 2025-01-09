@@ -158,6 +158,7 @@ namespace RekamMedisKlinik
         private void btnJanjiTemu_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, defaultColor);
+            openChildForm(new FormJanjiTemu());
 
             // should be able to hide sub menus;
             HideSubMenu();
