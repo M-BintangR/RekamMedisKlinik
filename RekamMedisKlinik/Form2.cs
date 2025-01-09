@@ -1,8 +1,10 @@
 ﻿using FontAwesome.Sharp;
 using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.Logging;
 using RekamMedisKlinik.Session;
 using System;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 
 namespace RekamMedisKlinik
@@ -38,6 +40,33 @@ namespace RekamMedisKlinik
             // change username & role label on top left navbar label
             this.lblUsername.Text = UserSessions.CurrentUser.Username;
             this.lblRole.Text = UserSessions.CurrentUser.Role;
+
+            // run avatar url
+            ProfilePicture();
+        }
+
+        private void ProfilePicture()
+        {
+            // get avatar url
+            string avatarUrl = UserSessions.CurrentUser.AvatarUrl();
+            if (!string.IsNullOrEmpty(avatarUrl) && Uri.IsWellFormedUriString(avatarUrl, UriKind.Absolute))
+            {
+                try{
+                    using (var webClient = new WebClient())
+                    {
+                        var imageBytes = webClient.DownloadData(avatarUrl);
+                        using (var stream = new MemoryStream(imageBytes))
+                        {
+                            pictureBox2.Image = Image.FromStream(stream);
+                        }
+                    }
+                }catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal memuat gambar: " + ex.Message);
+                }
+            }else{
+                MessageBox.Show("Avatar tidak ditemukan atau URL tidak valid.");
+            }
         }
 
         private void ActivateButton(object senderBtn, Color color)
@@ -197,7 +226,9 @@ namespace RekamMedisKlinik
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            // exit application run
+            Application.Exit();
         }
 
         private void btnMinimized_Click(object sender, EventArgs e)
@@ -242,8 +273,24 @@ namespace RekamMedisKlinik
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Close();
+            // should be able clear session user
+            UserSessions.CurrentUser = null;
+
+            // should be able copy form list if form is active 
+            var openForms = Application.OpenForms.Cast<Form>().ToList();
+
+            // should be able close form list 
+            foreach (Form form in openForms)
+            {
+                if (form is not FormLogin) // check loop, is login form or not
+                {
+                    form.Close();
+                }
+            }
+
+            // should be able show form login before close all form
+            FormLogin formLogin = new FormLogin();
+            formLogin.Show();
         }
 
         private FormCetak formCetakDokter;
@@ -288,5 +335,11 @@ namespace RekamMedisKlinik
                 form.Show();
             }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
