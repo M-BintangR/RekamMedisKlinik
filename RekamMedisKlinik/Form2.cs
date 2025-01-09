@@ -158,6 +158,7 @@ namespace RekamMedisKlinik
         private void btnJanjiTemu_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, defaultColor);
+            openChildForm(new FormJanjiTemu());
 
             // should be able to hide sub menus;
             HideSubMenu();
@@ -166,6 +167,7 @@ namespace RekamMedisKlinik
         private void btnAkunSaya_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, defaultColor);
+            openChildForm(new FormAkun());
 
             // should be able to hide sub menus;
             HideSubMenu();
@@ -235,6 +237,49 @@ namespace RekamMedisKlinik
         {
             this.Hide();
             this.Close();
+        }
+
+        private FormCetak formCetakDokter;
+        private FormCetak formCetakPembayaran;
+        private FormCetak formCetakRekamMedis;
+
+        private void btnLaporanDokter_Click(object sender, EventArgs e)
+        {
+            if (formCetakDokter == null || formCetakDokter.IsDisposed)
+            {
+                formCetakDokter = new FormCetak("dokter");
+            }
+            ToggleForm(formCetakDokter);
+        }
+
+        private void btnLaporanPembayaran_Click(object sender, EventArgs e)
+        {
+            if (formCetakPembayaran == null || formCetakPembayaran.IsDisposed)
+            {
+                formCetakPembayaran = new FormCetak("riwayat pembayaran");
+            }
+            ToggleForm(formCetakPembayaran);
+        }
+
+        private void btnLaporanRekamMedis_Click(object sender, EventArgs e)
+        {
+            if (formCetakRekamMedis == null || formCetakRekamMedis.IsDisposed)
+            {
+                formCetakRekamMedis = new FormCetak("rekam medis");
+            }
+            ToggleForm(formCetakRekamMedis);
+        }
+
+        private void ToggleForm(Form form)
+        {
+            if (form.Visible)
+            {
+                form.Hide();
+            }
+            else
+            {
+                form.Show();
+            }
         }
     }
 }

@@ -149,6 +149,7 @@
             btnLaporanRekamMedis.TextAlign = ContentAlignment.MiddleLeft;
             btnLaporanRekamMedis.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLaporanRekamMedis.UseVisualStyleBackColor = true;
+            btnLaporanRekamMedis.Click += btnLaporanRekamMedis_Click;
             // 
             // btnLaporanPembayaran
             // 
@@ -172,6 +173,7 @@
             btnLaporanPembayaran.TextAlign = ContentAlignment.MiddleLeft;
             btnLaporanPembayaran.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLaporanPembayaran.UseVisualStyleBackColor = true;
+            btnLaporanPembayaran.Click += btnLaporanPembayaran_Click;
             // 
             // btnLaporanDokter
             // 
@@ -195,6 +197,7 @@
             btnLaporanDokter.TextAlign = ContentAlignment.MiddleLeft;
             btnLaporanDokter.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLaporanDokter.UseVisualStyleBackColor = true;
+            btnLaporanDokter.Click += btnLaporanDokter_Click;
             // 
             // btnLaporan
             // 

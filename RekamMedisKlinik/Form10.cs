@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace RekamMedisKlinik
 {
-    public partial class FormChildPembayaran : Form
+    public partial class FormAkun : Form
     {
-        public FormChildPembayaran()
+        public FormAkun()
         {
             InitializeComponent();
         }
 
-        private void FormChildPembayaran_Load(object sender, EventArgs e)
+        private void label19_Click(object sender, EventArgs e)
         {
 
         }
