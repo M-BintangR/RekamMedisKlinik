@@ -52,9 +52,9 @@
             btnClose = new FontAwesome.Sharp.IconButton();
             btnMaximalSize = new FontAwesome.Sharp.IconButton();
             panelInfoUser = new Panel();
-            label2 = new Label();
+            lblRole = new Label();
             pictureBox2 = new PictureBox();
-            label1 = new Label();
+            lblUsername = new Label();
             panelChildForm = new Panel();
             panelMenu.SuspendLayout();
             panelSubmenuLaporan.SuspendLayout();
@@ -490,24 +490,24 @@
             // 
             // panelInfoUser
             // 
-            panelInfoUser.Controls.Add(label2);
+            panelInfoUser.Controls.Add(lblRole);
             panelInfoUser.Controls.Add(pictureBox2);
-            panelInfoUser.Controls.Add(label1);
+            panelInfoUser.Controls.Add(lblUsername);
             panelInfoUser.Dock = DockStyle.Right;
             panelInfoUser.Location = new Point(494, 0);
             panelInfoUser.Name = "panelInfoUser";
             panelInfoUser.Size = new Size(249, 56);
             panelInfoUser.TabIndex = 1;
             // 
-            // label2
+            // lblRole
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.FromArgb(128, 205, 20);
-            label2.Location = new Point(110, 27);
-            label2.Name = "label2";
-            label2.Size = new Size(44, 16);
-            label2.TabIndex = 1;
-            label2.Text = "admin";
+            lblRole.AutoSize = true;
+            lblRole.ForeColor = Color.FromArgb(128, 205, 20);
+            lblRole.Location = new Point(110, 27);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(44, 16);
+            lblRole.TabIndex = 1;
+            lblRole.Text = "admin";
             // 
             // pictureBox2
             // 
@@ -519,16 +519,16 @@
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             // 
-            // label1
+            // lblUsername
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.FromArgb(4, 63, 98);
-            label1.Location = new Point(109, 13);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 16);
-            label1.TabIndex = 0;
-            label1.Text = "Muhammad Bintang";
-            label1.Click += label1_Click;
+            lblUsername.AutoSize = true;
+            lblUsername.ForeColor = Color.FromArgb(4, 63, 98);
+            lblUsername.Location = new Point(109, 13);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(124, 16);
+            lblUsername.TabIndex = 0;
+            lblUsername.Text = "Muhammad Bintang";
+            lblUsername.Click += label1_Click;
             // 
             // panelChildForm
             // 
@@ -580,8 +580,8 @@
         private Panel panelInfoUser;
         private PictureBox pictureBox2;
         private Panel panelChildForm;
-        private Label label2;
-        private Label label1;
+        private Label lblRole;
+        private Label lblUsername;
         private Panel panel3;
         private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panel2;
