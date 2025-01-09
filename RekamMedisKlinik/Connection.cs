@@ -17,9 +17,19 @@ namespace RekamMedisKlinik
         {
             if (conn.State == ConnectionState.Closed)
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                    MessageBox.Show("Database berhasil di akses!", "success");
+                    Console.WriteLine("Koneksi berhasil dibuka.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error membuka koneksi: {ex.Message}");
+                }
             }
         }
+
 
         /// <summary>
         /// Menutup koneksi dari database.
@@ -163,5 +173,76 @@ namespace RekamMedisKlinik
                 CloseConnection();
             }
         }
+
+        public List<Dictionary<string, object>> ExecuteQuery(string query, Dictionary<string, object> parameters)
+        {
+            List<Dictionary<string, object>> result = new List<Dictionary<string, object>>();
+
+            try
+            {
+                OpenConnection();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    // Menambahkan parameter ke query
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue($"@{param.Key}", param.Value);
+                    }
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var row = new Dictionary<string, object>();
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                row[reader.GetName(i)] = reader.GetValue(i);
+                            }
+                            result.Add(row);
+                        }
+                    }
+                }
+
+                return result; // Mengembalikan data hasil query
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+
+        internal object ExecuteScalar(string query, Dictionary<string, object> parameters)
+        {
+            try
+            {
+                OpenConnection();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue($"@{param.Key}", param.Value);
+                    }
+
+                    return cmd.ExecuteScalar(); // Mengembalikan nilai pertama dari hasil query
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
     }
 }

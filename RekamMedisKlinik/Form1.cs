@@ -34,14 +34,24 @@ namespace RekamMedisKlinik
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (this.password == "adminadmin" && this.email == "admin@gmail.com")
+            // validation not empty email or password
+            if (string.IsNullOrWhiteSpace(this.email) || string.IsNullOrWhiteSpace(this.password))
+            {
+                MessageBox.Show("Email dan password harus diisi!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // instance login class
+            Login login = new Login(this.email, this.password);
+
+            // verify login access
+            if (login.VerifyLogin())
             {
                 new FormMenu().Show();
                 this.Hide();
             }
             else
             {
-                // Menampilkan pesan error
                 MessageBox.Show("Email atau password salah!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -1,4 +1,6 @@
 ﻿using FontAwesome.Sharp;
+using Microsoft.VisualBasic.ApplicationServices;
+using RekamMedisKlinik.Session;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,6 +14,7 @@ namespace RekamMedisKlinik
         private Color activeColor = Color.FromArgb(231, 246, 255);
         private Color defaultColor = Color.FromArgb(4, 63, 98);
         private int originalPanelWidth;
+        private User user = new User();
 
         public FormMenu()
         {
@@ -31,6 +34,10 @@ namespace RekamMedisKlinik
             // default close submenus
             this.panelSubmenuLaporan.Visible = false;
             this.panelMenu.HorizontalScroll.Visible = false;
+
+            // change username & role label on top left navbar label
+            this.lblUsername.Text = UserSessions.CurrentUser.Username;
+            this.lblRole.Text = UserSessions.CurrentUser.Role;
         }
 
         private void ActivateButton(object senderBtn, Color color)
