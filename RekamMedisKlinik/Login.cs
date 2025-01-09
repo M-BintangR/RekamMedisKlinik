@@ -19,7 +19,7 @@ public class Login
     {
         try
         {
-            string query = "SELECT id, email, username, avatar, role FROM users WHERE email = @Email AND password = @Password";
+            string query = "SELECT id_user, email, username, avatar, role FROM users WHERE email = @Email AND password = @Password";
 
             var parameters = new Dictionary<string, object>
             {
@@ -37,7 +37,7 @@ public class Login
 
                 // create session object on users sessions
                 UserSessions.CurrentUser = new Users(
-                    Convert.ToInt32(userRow["id"]),
+                    Convert.ToInt32(userRow["id_user"]),
                     userRow["email"].ToString(),
                     userRow["username"].ToString(),
                     userRow["role"].ToString(),
