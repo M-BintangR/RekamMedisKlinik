@@ -20,12 +20,12 @@ namespace RekamMedisKlinik
                 try
                 {
                     conn.Open();
-                    MessageBox.Show("Database berhasil di akses!", "success");
                     Console.WriteLine("Koneksi berhasil dibuka.");
                 }
-                catch (Exception ex)
+                catch (Exception err)
                 {
-                    Console.WriteLine($"Error membuka koneksi: {ex.Message}");
+                    MessageBox.Show($"Terjadi kesalahan saat ingin akses database : {err.Message}", "Error Database");
+                    Console.WriteLine($"Error membuka koneksi: {err.Message}");
                 }
             }
         }

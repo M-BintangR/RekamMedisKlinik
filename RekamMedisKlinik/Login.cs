@@ -19,7 +19,7 @@ public class Login
     {
         try
         {
-            string query = "SELECT id, email, username, role FROM users WHERE email = @Email AND password = @Password";
+            string query = "SELECT id, email, username, avatar, role FROM users WHERE email = @Email AND password = @Password";
 
             var parameters = new Dictionary<string, object>
             {
@@ -27,20 +27,21 @@ public class Login
                 { "Password", this.password }
             };
 
-            // Menggunakan ExecuteQuery untuk mendapatkan data pengguna
+            // get data users with method ExecuteQuery using Connection class
             var userData = connection.ExecuteQuery(query, parameters);
 
             if (userData != null && userData.Count > 0)
             {
-                // Ambil data pengguna pertama dari hasil query
-                var userRow = userData[0]; // Mengambil baris pertama hasil query
+                // get first data
+                var userRow = userData[0];
 
-                // Membuat objek Users dan menyimpannya ke dalam UserSession
+                // create session object on users sessions
                 UserSessions.CurrentUser = new Users(
                     Convert.ToInt32(userRow["id"]),
                     userRow["email"].ToString(),
                     userRow["username"].ToString(),
-                    userRow["role"].ToString()
+                    userRow["role"].ToString(),
+                    userRow["avatar"].ToString()
                 );
 
                 return true;
@@ -51,10 +52,10 @@ public class Login
                 return false;
             }
         }
-        catch (Exception ex)
+        catch (Exception err)
         {
-            MessageBox.Show("Terjadi kesalahan saat login.", "Error");
-            Console.WriteLine($"Error: {ex.Message}");
+            MessageBox.Show($"Terjadi kesalahan saat login : {err.Message}", "Error");
+            Console.WriteLine($"Error: {err.Message}");
             return false;
         }
     }
