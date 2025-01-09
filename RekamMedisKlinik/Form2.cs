@@ -1,11 +1,7 @@
 ﻿using FontAwesome.Sharp;
 using Microsoft.VisualBasic.ApplicationServices;
-using Microsoft.VisualBasic.Logging;
 using RekamMedisKlinik.Session;
-using System;
-using System.Drawing;
 using System.Net;
-using System.Windows.Forms;
 
 namespace RekamMedisKlinik
 {

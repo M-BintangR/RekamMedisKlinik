@@ -218,19 +218,14 @@ namespace RekamMedisKlinik
         }
 
 
-        internal object ExecuteScalar(string query, Dictionary<string, object> parameters)
+        internal object ExecuteScalar(string query)
         {
             try
             {
                 OpenConnection();
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    foreach (var param in parameters)
-                    {
-                        cmd.Parameters.AddWithValue($"@{param.Key}", param.Value);
-                    }
-
-                    return cmd.ExecuteScalar(); // Mengembalikan nilai pertama dari hasil query
+                    return cmd.ExecuteScalar();
                 }
             }
             catch (Exception ex)
@@ -243,6 +238,7 @@ namespace RekamMedisKlinik
                 CloseConnection();
             }
         }
+
 
     }
 }

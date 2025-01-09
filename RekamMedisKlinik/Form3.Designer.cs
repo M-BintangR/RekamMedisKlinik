@@ -35,19 +35,19 @@
             label1 = new Label();
             panel1 = new Panel();
             panel5 = new Panel();
-            label14 = new Label();
+            lblCountRekamMedis = new Label();
             label9 = new Label();
             label10 = new Label();
             panel4 = new Panel();
-            label13 = new Label();
+            lblCountJanjiTemu = new Label();
             label7 = new Label();
             label8 = new Label();
             panel3 = new Panel();
-            label12 = new Label();
+            lblCountDokter = new Label();
             label5 = new Label();
             label6 = new Label();
             panel2 = new Panel();
-            label11 = new Label();
+            lblCountPengguna = new Label();
             label4 = new Label();
             label3 = new Label();
             panel6 = new Panel();
@@ -59,7 +59,9 @@
             dtGridPertemuan = new DataGridView();
             label15 = new Label();
             label16 = new Label();
+            btnReload = new FontAwesome.Sharp.IconButton();
             panelChildTopDashboard.SuspendLayout();
+            panelChildTopRightDashboard.SuspendLayout();
             panelChildTopLeftDashboard.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -85,6 +87,7 @@
             // 
             // panelChildTopRightDashboard
             // 
+            panelChildTopRightDashboard.Controls.Add(btnReload);
             panelChildTopRightDashboard.Dock = DockStyle.Right;
             panelChildTopRightDashboard.Location = new Point(900, 0);
             panelChildTopRightDashboard.Name = "panelChildTopRightDashboard";
@@ -139,7 +142,7 @@
             // panel5
             // 
             panel5.BackColor = Color.White;
-            panel5.Controls.Add(label14);
+            panel5.Controls.Add(lblCountRekamMedis);
             panel5.Controls.Add(label9);
             panel5.Controls.Add(label10);
             panel5.Location = new Point(25, 395);
@@ -147,15 +150,15 @@
             panel5.Size = new Size(231, 100);
             panel5.TabIndex = 3;
             // 
-            // label14
+            // lblCountRekamMedis
             // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(149, 31);
-            label14.Name = "label14";
-            label14.Size = new Size(49, 37);
-            label14.TabIndex = 6;
-            label14.Text = "20";
+            lblCountRekamMedis.AutoSize = true;
+            lblCountRekamMedis.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountRekamMedis.Location = new Point(149, 31);
+            lblCountRekamMedis.Name = "lblCountRekamMedis";
+            lblCountRekamMedis.Size = new Size(49, 37);
+            lblCountRekamMedis.TabIndex = 6;
+            lblCountRekamMedis.Text = "20";
             // 
             // label9
             // 
@@ -182,7 +185,7 @@
             // panel4
             // 
             panel4.BackColor = Color.White;
-            panel4.Controls.Add(label13);
+            panel4.Controls.Add(lblCountJanjiTemu);
             panel4.Controls.Add(label7);
             panel4.Controls.Add(label8);
             panel4.Location = new Point(25, 271);
@@ -190,15 +193,15 @@
             panel4.Size = new Size(231, 100);
             panel4.TabIndex = 2;
             // 
-            // label13
+            // lblCountJanjiTemu
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(149, 30);
-            label13.Name = "label13";
-            label13.Size = new Size(49, 37);
-            label13.TabIndex = 5;
-            label13.Text = "20";
+            lblCountJanjiTemu.AutoSize = true;
+            lblCountJanjiTemu.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountJanjiTemu.Location = new Point(149, 30);
+            lblCountJanjiTemu.Name = "lblCountJanjiTemu";
+            lblCountJanjiTemu.Size = new Size(49, 37);
+            lblCountJanjiTemu.TabIndex = 5;
+            lblCountJanjiTemu.Text = "20";
             // 
             // label7
             // 
@@ -225,7 +228,7 @@
             // panel3
             // 
             panel3.BackColor = Color.White;
-            panel3.Controls.Add(label12);
+            panel3.Controls.Add(lblCountDokter);
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label6);
             panel3.Location = new Point(25, 146);
@@ -233,15 +236,15 @@
             panel3.Size = new Size(231, 100);
             panel3.TabIndex = 1;
             // 
-            // label12
+            // lblCountDokter
             // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(149, 31);
-            label12.Name = "label12";
-            label12.Size = new Size(49, 37);
-            label12.TabIndex = 4;
-            label12.Text = "20";
+            lblCountDokter.AutoSize = true;
+            lblCountDokter.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountDokter.Location = new Point(149, 31);
+            lblCountDokter.Name = "lblCountDokter";
+            lblCountDokter.Size = new Size(49, 37);
+            lblCountDokter.TabIndex = 4;
+            lblCountDokter.Text = "20";
             // 
             // label5
             // 
@@ -268,7 +271,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(label11);
+            panel2.Controls.Add(lblCountPengguna);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Location = new Point(25, 21);
@@ -276,15 +279,15 @@
             panel2.Size = new Size(231, 100);
             panel2.TabIndex = 0;
             // 
-            // label11
+            // lblCountPengguna
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(149, 30);
-            label11.Name = "label11";
-            label11.Size = new Size(49, 37);
-            label11.TabIndex = 3;
-            label11.Text = "20";
+            lblCountPengguna.AutoSize = true;
+            lblCountPengguna.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCountPengguna.Location = new Point(149, 30);
+            lblCountPengguna.Name = "lblCountPengguna";
+            lblCountPengguna.Size = new Size(49, 37);
+            lblCountPengguna.TabIndex = 3;
+            lblCountPengguna.Text = "20";
             // 
             // label4
             // 
@@ -410,6 +413,25 @@
             label16.TabIndex = 2;
             label16.Text = "Daftar Data ";
             // 
+            // btnReload
+            // 
+            btnReload.BackColor = Color.FromArgb(126, 209, 7);
+            btnReload.Cursor = Cursors.Hand;
+            btnReload.FlatAppearance.BorderSize = 0;
+            btnReload.FlatStyle = FlatStyle.Flat;
+            btnReload.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReload.ForeColor = Color.White;
+            btnReload.IconChar = FontAwesome.Sharp.IconChar.RotateRight;
+            btnReload.IconColor = SystemColors.Window;
+            btnReload.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnReload.IconSize = 20;
+            btnReload.Location = new Point(134, 24);
+            btnReload.Name = "btnReload";
+            btnReload.Size = new Size(46, 34);
+            btnReload.TabIndex = 15;
+            btnReload.UseVisualStyleBackColor = false;
+            btnReload.Click += btnReload_Click;
+            // 
             // FormChildDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -427,6 +449,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu Beranda";
             panelChildTopDashboard.ResumeLayout(false);
+            panelChildTopRightDashboard.ResumeLayout(false);
             panelChildTopLeftDashboard.ResumeLayout(false);
             panelChildTopLeftDashboard.PerformLayout();
             panel1.ResumeLayout(false);
@@ -468,10 +491,10 @@
         private Label label6;
         private Label label4;
         private Label label3;
-        private Label label11;
-        private Label label14;
-        private Label label13;
-        private Label label12;
+        private Label lblCountPengguna;
+        private Label lblCountRekamMedis;
+        private Label lblCountJanjiTemu;
+        private Label lblCountDokter;
         private Panel panel6;
         private Label label16;
         private Label label15;
@@ -481,5 +504,6 @@
         private DataGridView dtGridRekamMedis;
         private Label label17;
         private Label label18;
+        private FontAwesome.Sharp.IconButton btnReload;
     }
 }
