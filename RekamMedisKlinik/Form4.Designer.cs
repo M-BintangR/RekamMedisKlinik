@@ -169,6 +169,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(216, 28);
             txtSearch.TabIndex = 39;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // dtGridPengguna
             // 
@@ -179,6 +180,7 @@
             dtGridPengguna.Name = "dtGridPengguna";
             dtGridPengguna.Size = new Size(445, 309);
             dtGridPengguna.TabIndex = 4;
+            dtGridPengguna.CellContentClick += dtGridPengguna_CellContentClick;
             // 
             // label13
             // 
@@ -461,6 +463,7 @@
             btnHapus.Text = "Hapus";
             btnHapus.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHapus.UseVisualStyleBackColor = false;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnSunting
             // 
@@ -482,6 +485,7 @@
             btnSunting.Text = "Sunting";
             btnSunting.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSunting.UseVisualStyleBackColor = false;
+            btnSunting.Click += btnSunting_Click;
             // 
             // label4
             // 
