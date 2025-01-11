@@ -397,9 +397,10 @@
             label13.ForeColor = Color.FromArgb(126, 209, 7);
             label13.Location = new Point(17, 34);
             label13.Name = "label13";
-            label13.Size = new Size(150, 13);
+            label13.Size = new Size(113, 13);
             label13.TabIndex = 2;
-            label13.Text = "Tambah Atau Sunting Data.";
+            label13.Text = "Sunting Akun Anda.";
+            label13.Click += label13_Click;
             // 
             // label14
             // 

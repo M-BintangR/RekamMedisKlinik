@@ -73,5 +73,10 @@ namespace RekamMedisKlinik
         {
             this.txtPassword.UseSystemPasswordChar = !this.chcBoxShowPassword.Checked;
         }
+
+        private void txtPassword_TextChanged_1(object sender, EventArgs e)
+        {
+            this.password = txtPassword.Text;
+        }
     }
 }

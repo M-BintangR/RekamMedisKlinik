@@ -406,9 +406,9 @@
             label4.ForeColor = Color.FromArgb(126, 209, 7);
             label4.Location = new Point(17, 34);
             label4.Name = "label4";
-            label4.Size = new Size(150, 13);
+            label4.Size = new Size(104, 13);
             label4.TabIndex = 2;
-            label4.Text = "Tambah Atau Sunting Data.";
+            label4.Text = "Detail Data Pasien.";
             // 
             // btnBayar
             // 
@@ -438,9 +438,9 @@
             label3.ForeColor = Color.FromArgb(4, 63, 98);
             label3.Location = new Point(15, 13);
             label3.Name = "label3";
-            label3.Size = new Size(115, 21);
+            label3.Size = new Size(100, 21);
             label3.TabIndex = 2;
-            label3.Text = "Formulir Data";
+            label3.Text = "Data Pasien";
             // 
             // panel3
             // 
