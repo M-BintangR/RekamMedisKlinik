@@ -1,10 +1,15 @@
 ﻿using System.Data;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace RekamMedisKlinik
 {
     public partial class FormChildPengguna : Form
     {
-        private string nameFile, pathFileGambar, level, email, username, password;
+        private string nameFile, pathFileGambar, level, email, username, password, fileUrl, idUser;
+        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Aseets\\default-picture.png";
+        private string fileDestination = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Storage\\";
+
         public FormChildPengguna()
         {
             InitializeComponent();
@@ -19,19 +24,6 @@ namespace RekamMedisKlinik
             btnSunting.Enabled = false;
             btnHapus.Enabled = false;
             btnTambah.Enabled = true;
-
-            SetButtonState(btnSunting);
-            SetButtonState(btnHapus);
-            SetButtonState(btnTambah);
-        }
-
-        private void SetButtonState(Button button)
-        {
-            if (!button.Enabled)
-            {
-                button.BackColor = Color.FromArgb(235,235,235); 
-                button.ForeColor = Color.Black;
-            }
         }
 
         private void btnAmbilGambar_Click(object sender, EventArgs e)
@@ -43,6 +35,13 @@ namespace RekamMedisKlinik
             {
                 this.previewGambar.Image = new Bitmap(open.FileName);
                 this.pathFileGambar = open.FileName;
+
+                if (string.IsNullOrEmpty(this.pathFileGambar))
+                {
+                    MessageBox.Show("Gambar tidak valid atau tidak dipilih!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string ekstensiFile = System.IO.Path.GetExtension(this.pathFileGambar);
                 string namaFileUnik = $"IMG_{DateTime.Now.ToString("yyyyMMddHHmmss")}{ekstensiFile}";
                 this.nameFile = namaFileUnik;
@@ -51,24 +50,14 @@ namespace RekamMedisKlinik
 
         private void CopyFileDestination()
         {
-            // destination file
-            string folderTujuan = @"D:\PRAKTIKUM C SHARP\RekamMedisKlinik\RekamMedisKlinik\Storage\";
-
-            // created file
+            string folderTujuan = this.fileDestination;
             if (!System.IO.Directory.Exists(folderTujuan))
             {
                 System.IO.Directory.CreateDirectory(folderTujuan);
             }
-
-            // path combination destination 
             string pathTujuan = System.IO.Path.Combine(folderTujuan, this.nameFile);
-
-            // copy file 
             System.IO.File.Copy(this.pathFileGambar, pathTujuan, true);
-
-            // save name file
-            this.nameFile = pathTujuan;
-            MessageBox.Show(nameFile);
+            this.nameFile = System.IO.Path.GetFileName(pathTujuan);
         }
 
         private void cmdLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +87,11 @@ namespace RekamMedisKlinik
 
         private void Reset()
         {
+            // enabled button
+            btnTambah.Enabled = true;
+            btnSunting.Enabled = false;
+            btnHapus.Enabled = false;
+
             // load data
             LoadDataToGrid();
 
@@ -105,18 +99,20 @@ namespace RekamMedisKlinik
             this.txtEmail.Text = "";
             this.txtUsername.Text = "";
             this.textBox1.Text = "";
+            this.txtSearch.Text = "";
 
             // should able reset selected combo box
             cmdLevel.SelectedIndex = -1;
 
             // should able reset preview image
-            previewGambar.Image = null;
+            previewGambar.Image = new Bitmap(this.fileDefault);
 
             // should able reset variable 
             this.password = "";
             this.email = "";
             this.username = "";
             this.level = "";
+            this.idUser = "";
             this.pathFileGambar = "";
 
             // should focus to txtUsername 
@@ -136,20 +132,30 @@ namespace RekamMedisKlinik
                 CopyFileDestination();
                 CreateData();
                 MessageBox.Show("File gambar berhasil di upload", "success");
-            }catch(Exception err)
+            }
+            catch (Exception err)
             {
                 MessageBox.Show("File gagal disimpan,terjadi masalah" + err.Message, "error");
             }
         }
 
-        private DataTable GetDataPengguna()
+        private DataTable GetDataPengguna(string searchQuery = "")
         {
             DataTable dataTable = new DataTable();
             try
             {
                 Connection connection = new Connection();
-                string query = @"SELECT username, role, email FROM users";
-                var results = connection.ExecuteQuery(query, new Dictionary<string, object>());
+
+                string query = @"SELECT username, role, email, avatar, id_user 
+                         FROM users 
+                         WHERE username LIKE @searchQuery OR email LIKE @searchQuery";
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@searchQuery", "%" + searchQuery + "%" }
+                };
+
+                var results = connection.ExecuteQuery(query, parameters);
                 if (results != null && results.Count > 0)
                 {
                     foreach (var key in results[0].Keys)
@@ -177,11 +183,11 @@ namespace RekamMedisKlinik
             }
         }
 
+
         private void CreateData()
         {
             try
             {
-                MessageBox.Show($"email : {email} pass : {password} level : {level} username : {username}");
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) ||
                     string.IsNullOrEmpty(email) || string.IsNullOrEmpty(level))
                 {
@@ -195,7 +201,7 @@ namespace RekamMedisKlinik
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
                     { "@username", username },
-                    { "@password", password },  
+                    { "@password", password },
                     { "@email", email },
                     { "@role", level },
                     { "@avatar", nameFile }
@@ -204,7 +210,6 @@ namespace RekamMedisKlinik
                 Connection connection = new Connection();
                 connection.ExecuteQuery(query, parameters);
                 Reset();
-                
             }
             catch (Exception err)
             {
@@ -216,15 +221,19 @@ namespace RekamMedisKlinik
         {
             DataTable penggunaTable = GetDataPengguna();
 
-            try{
+            try
+            {
                 dtGridPengguna.DataSource = penggunaTable;
 
                 var tableHead = new Dictionary<string, string>
                 {
                     { "username", "Username" },
                     { "role", "Level" },
-                    { "email", "Alamat Surel (Email)" }
+                    { "email", "Alamat Surel (Email)" },
+                    { "avatar", "Foto"},
+                    { "id_user",  "Id User"}
                 };
+
 
                 foreach (var head in tableHead)
                 {
@@ -233,7 +242,145 @@ namespace RekamMedisKlinik
                         dtGridPengguna.Columns[head.Key].HeaderText = head.Value;
                     }
                 }
-            }catch (Exception err){
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Ada yang salah : {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtGridPengguna_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSunting.Enabled = true;
+            btnHapus.Enabled = true;
+            btnTambah.Enabled = false;
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dtGridPengguna.Rows[e.RowIndex];
+
+                txtEmail.Text = row.Cells["email"].Value?.ToString() ?? "";
+                txtUsername.Text = row.Cells["username"].Value?.ToString() ?? "";
+                cmdLevel.Text = row.Cells["role"].Value?.ToString() ?? "";
+
+                this.idUser = row.Cells["id_user"].Value?.ToString() ?? "";
+
+                if (!string.IsNullOrEmpty(row.Cells["avatar"].Value?.ToString()))
+                {
+                    string avatarPath = row.Cells["avatar"].Value?.ToString() ?? "";
+                    this.fileUrl = avatarPath;
+                    this.previewGambar.Image = new Bitmap(fileDestination + avatarPath);
+                }
+                else
+                {
+                    this.previewGambar.Image = new Bitmap(this.fileDefault);
+                }
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchQuery = txtSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                DataTable filteredData = GetDataPengguna(searchQuery);
+                dtGridPengguna.DataSource = filteredData;
+            }
+            else
+            {
+                LoadDataToGrid();
+            }
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.idUser))
+            {
+                MessageBox.Show("Pilih data yang ingin dihapus terlebih dahulu!", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirmation = MessageBox.Show("Apakah Anda yakin ingin menghapus data pengguna ini?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmation == DialogResult.Yes)
+            {
+                try
+                {
+                    string query = @"DELETE FROM users WHERE id_user = @id_user";
+                    Dictionary<string, object> parameters = new Dictionary<string, object>
+                    {
+                       { "@id_user", this.idUser }
+                    };
+
+                    Connection connection = new Connection();
+                    connection.ExecuteQuery(query, parameters);
+                    Reset();
+
+                    MessageBox.Show("Data pengguna berhasil dihapus ", "success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show($"Ada yang salah : {err.Message}", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnSunting_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.idUser))
+            {
+                MessageBox.Show("Pilih data yang ingin disunting terlebih dahulu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.username) || string.IsNullOrEmpty(this.email) || string.IsNullOrEmpty(this.level))
+            {
+                MessageBox.Show("Username, Email, dan Level harus diisi!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string query = @"UPDATE users SET username = @username, email = @email, role = @role WHERE id_user = @id_user";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@username", this.username },
+                { "@email", this.email },
+                { "@role", this.level },
+                { "@id_user", this.idUser }
+            };
+
+            if (!string.IsNullOrEmpty(this.password))
+            {
+                query = @"UPDATE users SET username = @username, password = @password, email = @email, role = @role WHERE id_user = @id_user";
+                parameters.Add("@password", this.password);  
+            }
+
+            if (!string.IsNullOrEmpty(this.nameFile) && !string.IsNullOrEmpty(this.pathFileGambar))
+            {
+                query = @"UPDATE users SET username = @username, email = @email, role = @role, avatar = @avatar WHERE id_user = @id_user";
+                parameters.Add("@avatar", this.nameFile);
+
+                try
+                {
+                    CopyFileDestination();  
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal menyimpan file gambar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            try
+            {
+                Connection connection = new Connection();
+                connection.ExecuteQuery(query, parameters);
+                MessageBox.Show("Data pengguna berhasil diperbarui", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reset(); 
+            }
+            catch (Exception err)
+            {
                 MessageBox.Show($"Ada yang salah : {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

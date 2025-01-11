@@ -12,6 +12,8 @@ namespace RekamMedisKlinik.Model
 
         public string Avatar { get; set; }
 
+        private string fileDestination =  @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Storage\\";
+
         public Users(int id, string email, string username, string role, string avatar = null)
         {
             this.Id = id;
@@ -21,17 +23,26 @@ namespace RekamMedisKlinik.Model
             this.Avatar = avatar;
         }
 
-        // method get avatar url
-        public string AvatarUrl()
+        // method get gravatar url
+        public string Gravatar()
         {
-            // should be able to avatar is not null
-            if (!string.IsNullOrEmpty(this.Avatar))
+            if (string.IsNullOrEmpty(this.Avatar))
             {
-                return this.Avatar;
+                return GetGravatarUrl(this.Email);
             }
 
-            // should be abel to avatar is null
-            return GetGravatarUrl(this.Email);
+            return "";
+         
+        }
+
+        public string AvatarUrl()
+        {
+            if (!string.IsNullOrEmpty(this.Avatar))
+            {
+                return this.fileDestination + this.Avatar;
+            }
+
+            return "";
         }
 
         // gravatar method

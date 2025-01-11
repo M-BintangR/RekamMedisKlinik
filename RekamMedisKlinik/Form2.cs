@@ -43,27 +43,47 @@ namespace RekamMedisKlinik
 
         private void ProfilePicture()
         {
-            // get avatar url
-            string avatarUrl = UserSessions.CurrentUser.AvatarUrl();
-            if (!string.IsNullOrEmpty(avatarUrl) && Uri.IsWellFormedUriString(avatarUrl, UriKind.Absolute))
+            // Cek gambar gravatar
+            string gravatar = UserSessions.CurrentUser.Gravatar();
+            if (!string.IsNullOrEmpty(gravatar) && Uri.IsWellFormedUriString(gravatar, UriKind.Absolute))
             {
-                try{
+                try
+                {
                     using (var webClient = new WebClient())
                     {
-                        var imageBytes = webClient.DownloadData(avatarUrl);
+                        var imageBytes = webClient.DownloadData(gravatar);
                         using (var stream = new MemoryStream(imageBytes))
                         {
-                            pictureBox2.Image = Image.FromStream(stream);
+                            pictureBox2.Image = Image.FromStream(stream); 
                         }
                     }
-                }catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal memuat gambar: " + ex.Message);
                 }
-            }else{
-                MessageBox.Show("Avatar tidak ditemukan atau URL tidak valid.");
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error memuat Gravatar: " + ex.Message);
+                }
+            }
+            else
+            {
+                string avatarPath = UserSessions.CurrentUser.AvatarUrl();
+                if (!string.IsNullOrEmpty(avatarPath))
+                {
+                    try
+                    {
+                        pictureBox2.Image = new Bitmap(avatarPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error memuat gambar lokal: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Avatar tidak ditemukan.");
+                }
             }
         }
+
 
         private void ActivateButton(object senderBtn, Color color)
         {
