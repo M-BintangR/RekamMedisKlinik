@@ -33,12 +33,12 @@
             label2 = new Label();
             label3 = new Label();
             txtEmail = new TextBox();
-            txtPassword = new TextBox();
             label4 = new Label();
             chcBoxShowPassword = new CheckBox();
             btnLogin = new Button();
             btnCloseLogin = new Button();
             pictureBox1 = new PictureBox();
+            txtPassword = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -86,20 +86,6 @@
             txtEmail.TabIndex = 4;
             txtEmail.TextChanged += txtEmail_TextChanged;
             // 
-            // txtPassword
-            // 
-            txtPassword.BackColor = Color.FromArgb(230, 231, 233);
-            txtPassword.BorderStyle = BorderStyle.None;
-            txtPassword.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(36, 311);
-            txtPassword.Multiline = true;
-            txtPassword.Name = "txtPassword";
-            txtPassword.ShortcutsEnabled = false;
-            txtPassword.Size = new Size(216, 28);
-            txtPassword.TabIndex = 6;
-            txtPassword.UseSystemPasswordChar = true;
-            txtPassword.TextChanged += txtPassword_TextChanged;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -113,7 +99,7 @@
             // 
             chcBoxShowPassword.AutoSize = true;
             chcBoxShowPassword.Cursor = Cursors.Hand;
-            chcBoxShowPassword.Location = new Point(131, 347);
+            chcBoxShowPassword.Location = new Point(131, 352);
             chcBoxShowPassword.Name = "chcBoxShowPassword";
             chcBoxShowPassword.Size = new Size(128, 21);
             chcBoxShowPassword.TabIndex = 7;
@@ -158,17 +144,30 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
+            // txtPassword
+            // 
+            txtPassword.BackColor = Color.FromArgb(230, 231, 233);
+            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.CharacterCasing = CharacterCasing.Lower;
+            txtPassword.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtPassword.Location = new Point(36, 314);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(216, 28);
+            txtPassword.TabIndex = 11;
+            txtPassword.TextChanged += txtPassword_TextChanged_1;
+            // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(285, 544);
+            Controls.Add(txtPassword);
             Controls.Add(pictureBox1);
             Controls.Add(btnCloseLogin);
             Controls.Add(btnLogin);
             Controls.Add(chcBoxShowPassword);
-            Controls.Add(txtPassword);
             Controls.Add(label4);
             Controls.Add(txtEmail);
             Controls.Add(label3);
@@ -191,11 +190,11 @@
         private Label label2;
         private Label label3;
         private TextBox txtEmail;
-        private TextBox txtPassword;
         private Label label4;
         private CheckBox chcBoxShowPassword;
         private Button btnLogin;
         private Button btnCloseLogin;
         private PictureBox pictureBox1;
+        private TextBox txtPassword;
     }
 }
