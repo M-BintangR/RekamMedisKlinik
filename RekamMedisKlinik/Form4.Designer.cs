@@ -36,6 +36,8 @@
             label1 = new Label();
             panel1 = new Panel();
             panel3 = new Panel();
+            label17 = new Label();
+            txtSearch = new TextBox();
             dtGridPengguna = new DataGridView();
             label13 = new Label();
             label14 = new Label();
@@ -62,8 +64,6 @@
             label4 = new Label();
             btnTambah = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
-            txtSearch = new TextBox();
-            label17 = new Label();
             panelChildTopPengguna.SuspendLayout();
             panelChildTopLeftPengguna.SuspendLayout();
             panel1.SuspendLayout();
@@ -147,6 +147,28 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(500, 405);
             panel3.TabIndex = 14;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
+            label17.ForeColor = Color.FromArgb(4, 63, 98);
+            label17.Location = new Point(183, 25);
+            label17.Name = "label17";
+            label17.Size = new Size(65, 17);
+            label17.TabIndex = 39;
+            label17.Text = "Cari Data";
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = Color.FromArgb(230, 231, 233);
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(257, 20);
+            txtSearch.Multiline = true;
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(216, 28);
+            txtSearch.TabIndex = 39;
             // 
             // dtGridPengguna
             // 
@@ -243,6 +265,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(216, 28);
             textBox1.TabIndex = 36;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label11
             // 
@@ -272,6 +295,7 @@
             btnAmbilGambar.Size = new Size(29, 26);
             btnAmbilGambar.TabIndex = 34;
             btnAmbilGambar.UseVisualStyleBackColor = false;
+            btnAmbilGambar.Click += btnAmbilGambar_Click;
             // 
             // previewGambar
             // 
@@ -316,6 +340,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(216, 28);
             txtEmail.TabIndex = 30;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // label7
             // 
@@ -367,6 +392,7 @@
             btnReset.Size = new Size(46, 34);
             btnReset.TabIndex = 14;
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // label8
             // 
@@ -385,10 +411,12 @@
             cmdLevel.FlatStyle = FlatStyle.Flat;
             cmdLevel.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             cmdLevel.FormattingEnabled = true;
+            cmdLevel.Items.AddRange(new object[] { "admin", "dokter" });
             cmdLevel.Location = new Point(22, 109);
             cmdLevel.Name = "cmdLevel";
             cmdLevel.Size = new Size(216, 24);
             cmdLevel.TabIndex = 12;
+            cmdLevel.SelectedIndexChanged += cmdLevel_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -411,6 +439,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(216, 28);
             txtUsername.TabIndex = 6;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // btnHapus
             // 
@@ -485,6 +514,7 @@
             btnTambah.Text = "Tambah";
             btnTambah.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTambah.UseVisualStyleBackColor = false;
+            btnTambah.Click += btnTambah_Click;
             // 
             // label3
             // 
@@ -496,28 +526,6 @@
             label3.Size = new Size(115, 21);
             label3.TabIndex = 2;
             label3.Text = "Formulir Data";
-            // 
-            // txtSearch
-            // 
-            txtSearch.BackColor = Color.FromArgb(230, 231, 233);
-            txtSearch.BorderStyle = BorderStyle.None;
-            txtSearch.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(257, 20);
-            txtSearch.Multiline = true;
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(216, 28);
-            txtSearch.TabIndex = 39;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
-            label17.ForeColor = Color.FromArgb(4, 63, 98);
-            label17.Location = new Point(183, 25);
-            label17.Name = "label17";
-            label17.Size = new Size(65, 17);
-            label17.TabIndex = 39;
-            label17.Text = "Cari Data";
             // 
             // FormChildPengguna
             // 
