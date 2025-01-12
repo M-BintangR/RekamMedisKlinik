@@ -56,7 +56,7 @@ namespace RekamMedisKlinik
                 string query = @"SELECT doctors.id_doctor AS id_doctor, doctors.name_doctor AS name_doctor, 
                                 doctors.address_doctor AS address_doctor, doctors.sex_doctor AS sex_doctor,
                                 users.id_user AS id_user FROM doctors INNER JOIN users ON doctors.user_id = users.id_user 
-                                WHERE doctors.name_doctor LIKE @searchQuery";
+                                WHERE doctors.name_doctor LIKE @searchQuery ORDER BY doctors.id_doctor DESC";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
@@ -294,7 +294,7 @@ namespace RekamMedisKlinik
                 return;
             }
 
-            var confirmation = MessageBox.Show("Apakah Anda yakin ingin menghapus data pengguna ini?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirmation = MessageBox.Show("Apakah Anda yakin ingin menghapus data dokter ini?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmation == DialogResult.Yes)
             {

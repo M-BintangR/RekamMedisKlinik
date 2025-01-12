@@ -148,7 +148,7 @@ namespace RekamMedisKlinik
 
                 string query = @"SELECT username, role, email, avatar, id_user 
                          FROM users 
-                         WHERE username LIKE @searchQuery OR email LIKE @searchQuery";
+                         WHERE username LIKE @searchQuery OR email LIKE @searchQuery ORDER BY id_user DESC";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
