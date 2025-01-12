@@ -56,11 +56,11 @@
             btnTambah = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
             panel3 = new Panel();
+            label12 = new Label();
+            txtSearch = new TextBox();
             dtGridDokter = new DataGridView();
             label13 = new Label();
             label14 = new Label();
-            label12 = new Label();
-            txtSearch = new TextBox();
             panelChildTopDokter.SuspendLayout();
             panelChildTopLeftDokter.SuspendLayout();
             panel1.SuspendLayout();
@@ -181,6 +181,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(478, 80);
             textBox1.TabIndex = 30;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label7
             // 
@@ -214,6 +215,7 @@
             radioPerempuan.TabStop = true;
             radioPerempuan.Text = "perempuan";
             radioPerempuan.UseVisualStyleBackColor = true;
+            radioPerempuan.CheckedChanged += radioPerempuan_CheckedChanged;
             // 
             // radioLakiLaki
             // 
@@ -225,6 +227,7 @@
             radioLakiLaki.TabStop = true;
             radioLakiLaki.Text = "laki-laki";
             radioLakiLaki.UseVisualStyleBackColor = true;
+            radioLakiLaki.CheckedChanged += radioLakiLaki_CheckedChanged;
             // 
             // label6
             // 
@@ -287,6 +290,7 @@
             btnReset.Size = new Size(46, 34);
             btnReset.TabIndex = 14;
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // label8
             // 
@@ -309,6 +313,7 @@
             cmbAkun.Name = "cmbAkun";
             cmbAkun.Size = new Size(486, 24);
             cmbAkun.TabIndex = 12;
+            cmbAkun.SelectedIndexChanged += cmbAkun_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -331,6 +336,7 @@
             txtNama.Name = "txtNama";
             txtNama.Size = new Size(216, 28);
             txtNama.TabIndex = 6;
+            txtNama.TextChanged += txtNama_TextChanged;
             // 
             // btnHapus
             // 
@@ -352,6 +358,7 @@
             btnHapus.Text = "Hapus";
             btnHapus.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHapus.UseVisualStyleBackColor = false;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnSunting
             // 
@@ -373,6 +380,7 @@
             btnSunting.Text = "Sunting";
             btnSunting.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSunting.UseVisualStyleBackColor = false;
+            btnSunting.Click += btnSunting_Click;
             // 
             // label4
             // 
@@ -405,6 +413,7 @@
             btnTambah.Text = "Tambah";
             btnTambah.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTambah.UseVisualStyleBackColor = false;
+            btnTambah.Click += btnTambah_Click;
             // 
             // label3
             // 
@@ -430,6 +439,29 @@
             panel3.Size = new Size(500, 405);
             panel3.TabIndex = 14;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
+            label12.ForeColor = Color.FromArgb(4, 63, 98);
+            label12.Location = new Point(183, 29);
+            label12.Name = "label12";
+            label12.Size = new Size(65, 17);
+            label12.TabIndex = 40;
+            label12.Text = "Cari Data";
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = Color.FromArgb(230, 231, 233);
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(256, 24);
+            txtSearch.Multiline = true;
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(216, 28);
+            txtSearch.TabIndex = 41;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
             // dtGridDokter
             // 
             dtGridDokter.BackgroundColor = Color.FromArgb(237, 255, 240);
@@ -439,6 +471,7 @@
             dtGridDokter.Name = "dtGridDokter";
             dtGridDokter.Size = new Size(445, 309);
             dtGridDokter.TabIndex = 4;
+            dtGridDokter.CellContentClick += dtGridDokter_CellContentClick;
             // 
             // label13
             // 
@@ -461,28 +494,6 @@
             label14.Size = new Size(91, 21);
             label14.TabIndex = 2;
             label14.Text = "Data Tabel";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
-            label12.ForeColor = Color.FromArgb(4, 63, 98);
-            label12.Location = new Point(183, 29);
-            label12.Name = "label12";
-            label12.Size = new Size(65, 17);
-            label12.TabIndex = 40;
-            label12.Text = "Cari Data";
-            // 
-            // txtSearch
-            // 
-            txtSearch.BackColor = Color.FromArgb(230, 231, 233);
-            txtSearch.BorderStyle = BorderStyle.None;
-            txtSearch.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(256, 24);
-            txtSearch.Multiline = true;
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(216, 28);
-            txtSearch.TabIndex = 41;
             // 
             // FormChildDokter
             // 
