@@ -36,10 +36,12 @@
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
-            previewGambar = new PictureBox();
+            lblStatus = new Label();
+            previewDokter = new PictureBox();
+            previewPasien = new PictureBox();
             label20 = new Label();
             label21 = new Label();
-            textBox1 = new TextBox();
+            txtNamaDokter = new TextBox();
             label16 = new Label();
             label19 = new Label();
             txtNamaPasien = new TextBox();
@@ -65,17 +67,18 @@
             label6 = new Label();
             label12 = new Label();
             txtSearch = new TextBox();
-            dtGridRekamMedis = new DataGridView();
+            dtGridPembayaran = new DataGridView();
             label13 = new Label();
             label14 = new Label();
             panelChildTopRekamMedis.SuspendLayout();
             panelChildTopLeftRekamMedis.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)previewGambar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)previewDokter).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)previewPasien).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtGridPembayaran).BeginInit();
             SuspendLayout();
             // 
             // panelChildTopRekamMedis
@@ -145,10 +148,12 @@
             // 
             panel2.AutoScroll = true;
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(previewGambar);
+            panel2.Controls.Add(lblStatus);
+            panel2.Controls.Add(previewDokter);
+            panel2.Controls.Add(previewPasien);
             panel2.Controls.Add(label20);
             panel2.Controls.Add(label21);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtNamaDokter);
             panel2.Controls.Add(label16);
             panel2.Controls.Add(label19);
             panel2.Controls.Add(txtNamaPasien);
@@ -173,15 +178,38 @@
             panel2.Size = new Size(532, 544);
             panel2.TabIndex = 15;
             // 
-            // previewGambar
+            // lblStatus
             // 
-            previewGambar.Image = (Image)resources.GetObject("previewGambar.Image");
-            previewGambar.Location = new Point(212, 60);
-            previewGambar.Name = "previewGambar";
-            previewGambar.Size = new Size(89, 84);
-            previewGambar.SizeMode = PictureBoxSizeMode.Zoom;
-            previewGambar.TabIndex = 41;
-            previewGambar.TabStop = false;
+            lblStatus.AutoSize = true;
+            lblStatus.BackColor = Color.Lime;
+            lblStatus.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStatus.ForeColor = Color.White;
+            lblStatus.Location = new Point(27, 470);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Padding = new Padding(30, 10, 30, 10);
+            lblStatus.Size = new Size(140, 57);
+            lblStatus.TabIndex = 44;
+            lblStatus.Text = "PAID";
+            // 
+            // previewDokter
+            // 
+            previewDokter.Image = (Image)resources.GetObject("previewDokter.Image");
+            previewDokter.Location = new Point(89, 77);
+            previewDokter.Name = "previewDokter";
+            previewDokter.Size = new Size(89, 84);
+            previewDokter.SizeMode = PictureBoxSizeMode.Zoom;
+            previewDokter.TabIndex = 42;
+            previewDokter.TabStop = false;
+            // 
+            // previewPasien
+            // 
+            previewPasien.Image = (Image)resources.GetObject("previewPasien.Image");
+            previewPasien.Location = new Point(355, 77);
+            previewPasien.Name = "previewPasien";
+            previewPasien.Size = new Size(89, 84);
+            previewPasien.SizeMode = PictureBoxSizeMode.Zoom;
+            previewPasien.TabIndex = 41;
+            previewPasien.TabStop = false;
             // 
             // label20
             // 
@@ -205,16 +233,18 @@
             label21.TabIndex = 39;
             label21.Text = "Nama Dokter";
             // 
-            // textBox1
+            // txtNamaDokter
             // 
-            textBox1.BackColor = Color.FromArgb(230, 231, 233);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(27, 203);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(224, 33);
-            textBox1.TabIndex = 38;
+            txtNamaDokter.BackColor = Color.FromArgb(230, 231, 233);
+            txtNamaDokter.BorderStyle = BorderStyle.None;
+            txtNamaDokter.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNamaDokter.Location = new Point(27, 203);
+            txtNamaDokter.Multiline = true;
+            txtNamaDokter.Name = "txtNamaDokter";
+            txtNamaDokter.ReadOnly = true;
+            txtNamaDokter.Size = new Size(224, 33);
+            txtNamaDokter.TabIndex = 38;
+            txtNamaDokter.TextChanged += txtNamaDokter_TextChanged;
             // 
             // label16
             // 
@@ -246,8 +276,10 @@
             txtNamaPasien.Location = new Point(281, 203);
             txtNamaPasien.Multiline = true;
             txtNamaPasien.Name = "txtNamaPasien";
+            txtNamaPasien.ReadOnly = true;
             txtNamaPasien.Size = new Size(224, 33);
             txtNamaPasien.TabIndex = 35;
+            txtNamaPasien.TextChanged += txtNamaPasien_TextChanged;
             // 
             // label15
             // 
@@ -279,8 +311,10 @@
             txtHarga.Location = new Point(282, 391);
             txtHarga.Multiline = true;
             txtHarga.Name = "txtHarga";
+            txtHarga.ReadOnly = true;
             txtHarga.Size = new Size(223, 52);
             txtHarga.TabIndex = 32;
+            txtHarga.TextChanged += txtHarga_TextChanged;
             // 
             // label11
             // 
@@ -312,8 +346,10 @@
             txtResep.Location = new Point(282, 296);
             txtResep.Multiline = true;
             txtResep.Name = "txtResep";
+            txtResep.ReadOnly = true;
             txtResep.Size = new Size(223, 52);
             txtResep.TabIndex = 29;
+            txtResep.TextChanged += txtResep_TextChanged;
             // 
             // label7
             // 
@@ -345,8 +381,10 @@
             txtPengobatan.Location = new Point(27, 391);
             txtPengobatan.Multiline = true;
             txtPengobatan.Name = "txtPengobatan";
+            txtPengobatan.ReadOnly = true;
             txtPengobatan.Size = new Size(224, 52);
             txtPengobatan.TabIndex = 26;
+            txtPengobatan.TextChanged += txtPengobatan_TextChanged;
             // 
             // label17
             // 
@@ -376,6 +414,7 @@
             btnReset.Size = new Size(46, 34);
             btnReset.TabIndex = 14;
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // label5
             // 
@@ -396,8 +435,10 @@
             txtDiagnosa.Location = new Point(25, 296);
             txtDiagnosa.Multiline = true;
             txtDiagnosa.Name = "txtDiagnosa";
+            txtDiagnosa.ReadOnly = true;
             txtDiagnosa.Size = new Size(226, 52);
             txtDiagnosa.TabIndex = 6;
+            txtDiagnosa.TextChanged += txtDiagnosa_TextChanged;
             // 
             // label4
             // 
@@ -430,6 +471,7 @@
             btnBayar.Text = "Bayar";
             btnBayar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBayar.UseVisualStyleBackColor = false;
+            btnBayar.Click += btnBayar_Click;
             // 
             // label3
             // 
@@ -448,7 +490,7 @@
             panel3.Controls.Add(panel4);
             panel3.Controls.Add(label12);
             panel3.Controls.Add(txtSearch);
-            panel3.Controls.Add(dtGridRekamMedis);
+            panel3.Controls.Add(dtGridPembayaran);
             panel3.Controls.Add(label13);
             panel3.Controls.Add(label14);
             panel3.Location = new Point(23, 23);
@@ -509,16 +551,18 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(216, 28);
             txtSearch.TabIndex = 41;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
-            // dtGridRekamMedis
+            // dtGridPembayaran
             // 
-            dtGridRekamMedis.BackgroundColor = Color.FromArgb(237, 255, 240);
-            dtGridRekamMedis.BorderStyle = BorderStyle.Fixed3D;
-            dtGridRekamMedis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtGridRekamMedis.Location = new Point(17, 164);
-            dtGridRekamMedis.Name = "dtGridRekamMedis";
-            dtGridRekamMedis.Size = new Size(455, 218);
-            dtGridRekamMedis.TabIndex = 4;
+            dtGridPembayaran.BackgroundColor = Color.FromArgb(237, 255, 240);
+            dtGridPembayaran.BorderStyle = BorderStyle.Fixed3D;
+            dtGridPembayaran.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtGridPembayaran.Location = new Point(17, 164);
+            dtGridPembayaran.Name = "dtGridPembayaran";
+            dtGridPembayaran.Size = new Size(455, 218);
+            dtGridPembayaran.TabIndex = 4;
+            dtGridPembayaran.CellContentClick += dtGridPembayaran_CellContentClick;
             // 
             // label13
             // 
@@ -561,12 +605,13 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)previewGambar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)previewDokter).EndInit();
+            ((System.ComponentModel.ISupportInitialize)previewPasien).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtGridPembayaran).EndInit();
             ResumeLayout(false);
         }
 
@@ -601,7 +646,7 @@
         private Panel panel3;
         private Label label12;
         private TextBox txtSearch;
-        private DataGridView dtGridRekamMedis;
+        private DataGridView dtGridPembayaran;
         private Label label13;
         private Label label14;
         private Label label16;
@@ -612,7 +657,9 @@
         private Label label6;
         private Label label20;
         private Label label21;
-        private TextBox textBox1;
-        private PictureBox previewGambar;
+        private TextBox txtNamaDokter;
+        private PictureBox previewPasien;
+        private PictureBox previewDokter;
+        private Label lblStatus;
     }
 }
