@@ -36,6 +36,7 @@
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            previewGambar = new PictureBox();
             label15 = new Label();
             label18 = new Label();
             txtHarga = new TextBox();
@@ -65,16 +66,13 @@
             dtGridRekamMedis = new DataGridView();
             label13 = new Label();
             label14 = new Label();
-            previewGambar = new PictureBox();
-            lblNamaPasien = new Label();
-            lblJenisKelamin = new Label();
             panelChildTopRekamMedis.SuspendLayout();
             panelChildTopLeftRekamMedis.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)previewGambar).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)previewGambar).BeginInit();
             SuspendLayout();
             // 
             // panelChildTopRekamMedis
@@ -143,8 +141,6 @@
             // 
             panel2.AutoScroll = true;
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(lblJenisKelamin);
-            panel2.Controls.Add(lblNamaPasien);
             panel2.Controls.Add(previewGambar);
             panel2.Controls.Add(label15);
             panel2.Controls.Add(label18);
@@ -174,12 +170,22 @@
             panel2.Size = new Size(532, 491);
             panel2.TabIndex = 15;
             // 
+            // previewGambar
+            // 
+            previewGambar.Image = (Image)resources.GetObject("previewGambar.Image");
+            previewGambar.Location = new Point(416, 86);
+            previewGambar.Name = "previewGambar";
+            previewGambar.Size = new Size(74, 72);
+            previewGambar.SizeMode = PictureBoxSizeMode.Zoom;
+            previewGambar.TabIndex = 35;
+            previewGambar.TabStop = false;
+            // 
             // label15
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label15.ForeColor = Color.FromArgb(252, 0, 0);
-            label15.Location = new Point(321, 277);
+            label15.Location = new Point(333, 279);
             label15.Name = "label15";
             label15.Size = new Size(13, 13);
             label15.TabIndex = 34;
@@ -190,7 +196,7 @@
             label18.AutoSize = true;
             label18.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
             label18.ForeColor = Color.FromArgb(4, 63, 98);
-            label18.Location = new Point(278, 272);
+            label18.Location = new Point(290, 274);
             label18.Name = "label18";
             label18.Size = new Size(49, 17);
             label18.TabIndex = 33;
@@ -201,18 +207,19 @@
             txtHarga.BackColor = Color.FromArgb(230, 231, 233);
             txtHarga.BorderStyle = BorderStyle.None;
             txtHarga.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtHarga.Location = new Point(279, 299);
+            txtHarga.Location = new Point(291, 301);
             txtHarga.Multiline = true;
             txtHarga.Name = "txtHarga";
             txtHarga.Size = new Size(199, 34);
             txtHarga.TabIndex = 32;
+            txtHarga.TextChanged += txtHarga_TextChanged;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.FromArgb(252, 0, 0);
-            label11.Location = new Point(358, 181);
+            label11.Location = new Point(370, 183);
             label11.Name = "label11";
             label11.Size = new Size(13, 13);
             label11.TabIndex = 31;
@@ -223,7 +230,7 @@
             labeldiagnosa.AutoSize = true;
             labeldiagnosa.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
             labeldiagnosa.ForeColor = Color.FromArgb(4, 63, 98);
-            labeldiagnosa.Location = new Point(278, 177);
+            labeldiagnosa.Location = new Point(290, 179);
             labeldiagnosa.Name = "labeldiagnosa";
             labeldiagnosa.Size = new Size(78, 17);
             labeldiagnosa.TabIndex = 30;
@@ -234,18 +241,19 @@
             txtResep.BackColor = Color.FromArgb(230, 231, 233);
             txtResep.BorderStyle = BorderStyle.None;
             txtResep.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtResep.Location = new Point(279, 204);
+            txtResep.Location = new Point(291, 206);
             txtResep.Multiline = true;
             txtResep.Name = "txtResep";
             txtResep.Size = new Size(199, 52);
             txtResep.TabIndex = 29;
+            txtResep.TextChanged += txtResep_TextChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(252, 0, 0);
-            label7.Location = new Point(103, 277);
+            label7.Location = new Point(115, 279);
             label7.Name = "label7";
             label7.Size = new Size(13, 13);
             label7.TabIndex = 28;
@@ -256,7 +264,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
             label10.ForeColor = Color.FromArgb(4, 63, 98);
-            label10.Location = new Point(23, 272);
+            label10.Location = new Point(35, 274);
             label10.Name = "label10";
             label10.Size = new Size(82, 17);
             label10.TabIndex = 27;
@@ -267,18 +275,19 @@
             txtPengobatan.BackColor = Color.FromArgb(230, 231, 233);
             txtPengobatan.BorderStyle = BorderStyle.None;
             txtPengobatan.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtPengobatan.Location = new Point(24, 299);
+            txtPengobatan.Location = new Point(36, 301);
             txtPengobatan.Multiline = true;
             txtPengobatan.Name = "txtPengobatan";
             txtPengobatan.Size = new Size(238, 52);
             txtPengobatan.TabIndex = 26;
+            txtPengobatan.TextChanged += txtPengobatan_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(252, 0, 0);
-            label6.Location = new Point(22, 144);
+            label6.Location = new Point(34, 145);
             label6.Name = "label6";
             label6.Size = new Size(175, 13);
             label6.TabIndex = 25;
@@ -289,7 +298,7 @@
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label17.ForeColor = Color.FromArgb(252, 0, 0);
-            label17.Location = new Point(86, 182);
+            label17.Location = new Point(98, 184);
             label17.Name = "label17";
             label17.Size = new Size(13, 13);
             label17.TabIndex = 24;
@@ -300,7 +309,7 @@
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label16.ForeColor = Color.FromArgb(252, 0, 0);
-            label16.Location = new Point(97, 86);
+            label16.Location = new Point(116, 86);
             label16.Name = "label16";
             label16.Size = new Size(13, 13);
             label16.TabIndex = 23;
@@ -334,17 +343,19 @@
             btnReset.Size = new Size(46, 34);
             btnReset.TabIndex = 14;
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
             label8.ForeColor = Color.FromArgb(4, 63, 98);
-            label8.Location = new Point(23, 80);
+            label8.Location = new Point(35, 81);
             label8.Name = "label8";
-            label8.Size = new Size(76, 17);
+            label8.Size = new Size(80, 17);
             label8.TabIndex = 13;
-            label8.Text = "Cari Pasien";
+            label8.Text = "Pilih Pasien";
+            label8.Click += label8_Click;
             // 
             // cmbPasien
             // 
@@ -352,17 +363,18 @@
             cmbPasien.FlatStyle = FlatStyle.Flat;
             cmbPasien.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             cmbPasien.FormattingEnabled = true;
-            cmbPasien.Location = new Point(22, 109);
+            cmbPasien.Location = new Point(34, 110);
             cmbPasien.Name = "cmbPasien";
-            cmbPasien.Size = new Size(240, 24);
+            cmbPasien.Size = new Size(349, 24);
             cmbPasien.TabIndex = 12;
+            cmbPasien.SelectedIndexChanged += cmbPasien_SelectedIndexChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(4, 63, 98);
-            label5.Location = new Point(21, 177);
+            label5.Location = new Point(33, 179);
             label5.Name = "label5";
             label5.Size = new Size(66, 17);
             label5.TabIndex = 7;
@@ -373,11 +385,12 @@
             txtDiagnosa.BackColor = Color.FromArgb(230, 231, 233);
             txtDiagnosa.BorderStyle = BorderStyle.None;
             txtDiagnosa.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtDiagnosa.Location = new Point(22, 204);
+            txtDiagnosa.Location = new Point(34, 206);
             txtDiagnosa.Multiline = true;
             txtDiagnosa.Name = "txtDiagnosa";
             txtDiagnosa.Size = new Size(240, 52);
             txtDiagnosa.TabIndex = 6;
+            txtDiagnosa.TextChanged += txtDiagnosa_TextChanged;
             // 
             // btnHapus
             // 
@@ -399,6 +412,7 @@
             btnHapus.Text = "Hapus";
             btnHapus.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHapus.UseVisualStyleBackColor = false;
+            btnHapus.Click += btnHapus_Click;
             // 
             // btnSunting
             // 
@@ -420,6 +434,7 @@
             btnSunting.Text = "Sunting";
             btnSunting.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSunting.UseVisualStyleBackColor = false;
+            btnSunting.Click += btnSunting_Click;
             // 
             // label4
             // 
@@ -452,6 +467,7 @@
             btnTambah.Text = "Tambah";
             btnTambah.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTambah.UseVisualStyleBackColor = false;
+            btnTambah.Click += btnTambah_Click;
             // 
             // label3
             // 
@@ -498,6 +514,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(216, 28);
             txtSearch.TabIndex = 41;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // dtGridRekamMedis
             // 
@@ -508,6 +525,7 @@
             dtGridRekamMedis.Name = "dtGridRekamMedis";
             dtGridRekamMedis.Size = new Size(445, 309);
             dtGridRekamMedis.TabIndex = 4;
+            dtGridRekamMedis.CellContentClick += dtGridRekamMedis_CellContentClick;
             // 
             // label13
             // 
@@ -531,38 +549,6 @@
             label14.TabIndex = 2;
             label14.Text = "Data Tabel";
             // 
-            // previewGambar
-            // 
-            previewGambar.Image = (Image)resources.GetObject("previewGambar.Image");
-            previewGambar.Location = new Point(285, 80);
-            previewGambar.Name = "previewGambar";
-            previewGambar.Size = new Size(71, 77);
-            previewGambar.SizeMode = PictureBoxSizeMode.Zoom;
-            previewGambar.TabIndex = 35;
-            previewGambar.TabStop = false;
-            // 
-            // lblNamaPasien
-            // 
-            lblNamaPasien.AutoSize = true;
-            lblNamaPasien.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
-            lblNamaPasien.ForeColor = Color.FromArgb(4, 63, 98);
-            lblNamaPasien.Location = new Point(363, 82);
-            lblNamaPasien.Name = "lblNamaPasien";
-            lblNamaPasien.Size = new Size(88, 17);
-            lblNamaPasien.TabIndex = 36;
-            lblNamaPasien.Text = "Nama Pasien";
-            // 
-            // lblJenisKelamin
-            // 
-            lblJenisKelamin.AutoSize = true;
-            lblJenisKelamin.Font = new Font("Nirmala UI", 9.75F, FontStyle.Bold);
-            lblJenisKelamin.ForeColor = Color.FromArgb(4, 63, 98);
-            lblJenisKelamin.Location = new Point(364, 105);
-            lblJenisKelamin.Name = "lblJenisKelamin";
-            lblJenisKelamin.Size = new Size(93, 17);
-            lblJenisKelamin.TabIndex = 37;
-            lblJenisKelamin.Text = "Jenis Kelamin";
-            // 
             // FormChildRekamMedis
             // 
             AllowDrop = true;
@@ -582,10 +568,10 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)previewGambar).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtGridRekamMedis).EndInit();
-            ((System.ComponentModel.ISupportInitialize)previewGambar).EndInit();
             ResumeLayout(false);
         }
 
@@ -597,7 +583,23 @@
         private Label label2;
         private Label label1;
         private Panel panel1;
+        private Panel panel3;
+        private Label label12;
+        private TextBox txtSearch;
+        private DataGridView dtGridRekamMedis;
+        private Label label13;
+        private Label label14;
         private Panel panel2;
+        private PictureBox previewGambar;
+        private Label label15;
+        private Label label18;
+        private TextBox txtHarga;
+        private Label label11;
+        private Label labeldiagnosa;
+        private TextBox txtResep;
+        private Label label7;
+        private Label label10;
+        private TextBox txtPengobatan;
         private Label label6;
         private Label label17;
         private Label label16;
@@ -612,23 +614,5 @@
         private Label label4;
         private FontAwesome.Sharp.IconButton btnTambah;
         private Label label3;
-        private Panel panel3;
-        private Label label12;
-        private TextBox txtSearch;
-        private DataGridView dtGridRekamMedis;
-        private Label label13;
-        private Label label14;
-        private Label label7;
-        private Label label10;
-        private TextBox txtPengobatan;
-        private Label label15;
-        private Label label18;
-        private TextBox txtHarga;
-        private Label label11;
-        private Label labeldiagnosa;
-        private TextBox txtResep;
-        private Label lblJenisKelamin;
-        private Label lblNamaPasien;
-        private PictureBox previewGambar;
     }
 }

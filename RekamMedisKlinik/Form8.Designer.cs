@@ -67,7 +67,7 @@
             label30 = new Label();
             textBox4 = new TextBox();
             label25 = new Label();
-            dataGridJanjiTemu = new DataGridView();
+            dtGridJanjiTemu = new DataGridView();
             btnResetJanjiTemu = new FontAwesome.Sharp.IconButton();
             label24 = new Label();
             btnHapusJanjiTemu = new FontAwesome.Sharp.IconButton();
@@ -87,7 +87,7 @@
             cmbPasien = new ComboBox();
             label11 = new Label();
             btnAmbilGambar = new FontAwesome.Sharp.IconButton();
-            pictureBox1 = new PictureBox();
+            previewGambar = new PictureBox();
             label4 = new Label();
             label3 = new Label();
             panel3.SuspendLayout();
@@ -96,8 +96,8 @@
             panelChildTopLeftRekamMedis.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridJanjiTemu).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtGridJanjiTemu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)previewGambar).BeginInit();
             SuspendLayout();
             // 
             // panel3
@@ -536,7 +536,7 @@
             panel2.Controls.Add(label30);
             panel2.Controls.Add(textBox4);
             panel2.Controls.Add(label25);
-            panel2.Controls.Add(dataGridJanjiTemu);
+            panel2.Controls.Add(dtGridJanjiTemu);
             panel2.Controls.Add(btnResetJanjiTemu);
             panel2.Controls.Add(label24);
             panel2.Controls.Add(btnHapusJanjiTemu);
@@ -556,7 +556,7 @@
             panel2.Controls.Add(cmbPasien);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(btnAmbilGambar);
-            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(previewGambar);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
             panel2.Location = new Point(580, 93);
@@ -596,6 +596,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(216, 28);
             textBox4.TabIndex = 65;
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label25
             // 
@@ -608,15 +609,16 @@
             label25.TabIndex = 63;
             label25.Text = "*";
             // 
-            // dataGridJanjiTemu
+            // dtGridJanjiTemu
             // 
-            dataGridJanjiTemu.BackgroundColor = Color.FromArgb(237, 255, 240);
-            dataGridJanjiTemu.BorderStyle = BorderStyle.Fixed3D;
-            dataGridJanjiTemu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridJanjiTemu.Location = new Point(26, 517);
-            dataGridJanjiTemu.Name = "dataGridJanjiTemu";
-            dataGridJanjiTemu.Size = new Size(455, 100);
-            dataGridJanjiTemu.TabIndex = 63;
+            dtGridJanjiTemu.BackgroundColor = Color.FromArgb(237, 255, 240);
+            dtGridJanjiTemu.BorderStyle = BorderStyle.Fixed3D;
+            dtGridJanjiTemu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtGridJanjiTemu.Location = new Point(26, 517);
+            dtGridJanjiTemu.Name = "dtGridJanjiTemu";
+            dtGridJanjiTemu.Size = new Size(455, 100);
+            dtGridJanjiTemu.TabIndex = 63;
+            dtGridJanjiTemu.CellContentClick += dtGridJanjiTemu_CellContentClick;
             // 
             // btnResetJanjiTemu
             // 
@@ -635,6 +637,7 @@
             btnResetJanjiTemu.Size = new Size(46, 34);
             btnResetJanjiTemu.TabIndex = 66;
             btnResetJanjiTemu.UseVisualStyleBackColor = false;
+            btnResetJanjiTemu.Click += btnResetJanjiTemu_Click;
             // 
             // label24
             // 
@@ -667,6 +670,7 @@
             btnHapusJanjiTemu.Text = "Hapus";
             btnHapusJanjiTemu.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHapusJanjiTemu.UseVisualStyleBackColor = false;
+            btnHapusJanjiTemu.Click += btnHapusJanjiTemu_Click;
             // 
             // label21
             // 
@@ -699,6 +703,7 @@
             btnSuntingJanjiTemu.Text = "Sunting";
             btnSuntingJanjiTemu.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSuntingJanjiTemu.UseVisualStyleBackColor = false;
+            btnSuntingJanjiTemu.Click += btnSuntingJanjiTemu_Click;
             // 
             // label20
             // 
@@ -731,6 +736,7 @@
             btnTambahJanjiTemu.Text = "Tambah";
             btnTambahJanjiTemu.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTambahJanjiTemu.UseVisualStyleBackColor = false;
+            btnTambahJanjiTemu.Click += btnTambahJanjiTemu_Click;
             // 
             // txtRuangan
             // 
@@ -742,6 +748,7 @@
             txtRuangan.Name = "txtRuangan";
             txtRuangan.Size = new Size(216, 28);
             txtRuangan.TabIndex = 59;
+            txtRuangan.TextChanged += txtRuangan_TextChanged;
             // 
             // dateJanjiTemu
             // 
@@ -749,6 +756,7 @@
             dateJanjiTemu.Name = "dateJanjiTemu";
             dateJanjiTemu.Size = new Size(200, 23);
             dateJanjiTemu.TabIndex = 60;
+            dateJanjiTemu.ValueChanged += dateJanjiTemu_ValueChanged;
             // 
             // label15
             // 
@@ -793,6 +801,7 @@
             cmbDokter.Name = "cmbDokter";
             cmbDokter.Size = new Size(226, 24);
             cmbDokter.TabIndex = 49;
+            cmbDokter.SelectedIndexChanged += cmbDokter_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -837,6 +846,7 @@
             cmbPasien.Name = "cmbPasien";
             cmbPasien.Size = new Size(226, 24);
             cmbPasien.TabIndex = 45;
+            cmbPasien.SelectedIndexChanged += cmbPasien_SelectedIndexChanged;
             // 
             // label11
             // 
@@ -866,16 +876,17 @@
             btnAmbilGambar.Size = new Size(29, 26);
             btnAmbilGambar.TabIndex = 43;
             btnAmbilGambar.UseVisualStyleBackColor = false;
+            btnAmbilGambar.Click += btnAmbilGambar_Click;
             // 
-            // pictureBox1
+            // previewGambar
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(26, 78);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(49, 50);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 42;
-            pictureBox1.TabStop = false;
+            previewGambar.Image = (Image)resources.GetObject("previewGambar.Image");
+            previewGambar.Location = new Point(26, 78);
+            previewGambar.Name = "previewGambar";
+            previewGambar.Size = new Size(49, 50);
+            previewGambar.SizeMode = PictureBoxSizeMode.Zoom;
+            previewGambar.TabIndex = 42;
+            previewGambar.TabStop = false;
             // 
             // label4
             // 
@@ -921,8 +932,8 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridJanjiTemu).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtGridJanjiTemu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)previewGambar).EndInit();
             ResumeLayout(false);
         }
 
@@ -962,7 +973,7 @@
         private FontAwesome.Sharp.IconButton btnTambah;
         private Label label11;
         private FontAwesome.Sharp.IconButton btnAmbilGambar;
-        private PictureBox pictureBox1;
+        private PictureBox previewGambar;
         private Label label5;
         private Label label7;
         private Label label10;
@@ -975,7 +986,7 @@
         private Label label30;
         private TextBox textBox4;
         private Label label25;
-        private DataGridView dataGridJanjiTemu;
+        private DataGridView dtGridJanjiTemu;
         private FontAwesome.Sharp.IconButton btnResetJanjiTemu;
         private Label label24;
         private FontAwesome.Sharp.IconButton btnHapusJanjiTemu;

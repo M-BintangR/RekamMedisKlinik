@@ -36,7 +36,7 @@ namespace RekamMedisKlinik
 
             string query = @"
                 SELECT name_doctor, name_patient, date, room
-                FROM appointment
+                FROM appointments
                 WHERE YEAR(date) = @currentYear AND MONTH(date) = @currentMonth";
 
             var parameters = new Dictionary<string, object>
@@ -80,7 +80,7 @@ namespace RekamMedisKlinik
 
             string query = @"
                 SELECT price, name_doctor, name_patient, diagnosis, treatment, address_patient, date_medical 
-                FROM medical_record
+                FROM medical_records
                 WHERE DATE(date_medical) BETWEEN @startOfWeek AND @endOfWeek";
 
             var parameters = new Dictionary<string, object>

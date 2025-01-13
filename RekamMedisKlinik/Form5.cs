@@ -16,6 +16,8 @@ namespace RekamMedisKlinik
             btnSunting.Enabled = false;
             btnTambah.Enabled = true;
 
+            cmbAkun.SelectedValue = "";
+
         }
 
         private void txtNama_TextChanged(object sender, EventArgs e)
@@ -249,7 +251,7 @@ namespace RekamMedisKlinik
         {
             if (cmbAkun.SelectedValue != null)
             {
-                this.idPengguna = cmbAkun.SelectedValue.ToString();
+                this.idPengguna = cmbAkun.SelectedValue?.ToString() ?? "";
             }
         }
 
