@@ -31,17 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAkun));
             panelChildTopRightRekamMedis = new Panel();
             panel1 = new Panel();
+            panelDataAkun = new Panel();
+            label3 = new Label();
             panel3 = new Panel();
-            panel4 = new Panel();
+            label4 = new Label();
+            btnSunting = new FontAwesome.Sharp.IconButton();
+            panelDokter = new Panel();
             label19 = new Label();
             label11 = new Label();
-            textBox2 = new TextBox();
+            txtAlamat = new TextBox();
             label17 = new Label();
             radioPerempuan = new RadioButton();
             radioLakiLaki = new RadioButton();
             label18 = new Label();
             txtNama = new TextBox();
-            label12 = new Label();
             label15 = new Label();
             textBox1 = new TextBox();
             label6 = new Label();
@@ -49,28 +52,27 @@
             txtEmail = new TextBox();
             label7 = new Label();
             label16 = new Label();
-            label9 = new Label();
             label8 = new Label();
             cmdLevel = new ComboBox();
             label5 = new Label();
             txtUsername = new TextBox();
-            btnSunting = new FontAwesome.Sharp.IconButton();
             label13 = new Label();
             label14 = new Label();
             panel2 = new Panel();
-            label4 = new Label();
-            label3 = new Label();
+            lblRole = new Label();
+            lblUsername = new Label();
             btnAmbilGambar = new FontAwesome.Sharp.IconButton();
-            pictureBox1 = new PictureBox();
+            previewProfile = new PictureBox();
             label2 = new Label();
             panelChildTopLeftRekamMedis = new Panel();
             label1 = new Label();
             panelChildTopRekamMedis = new Panel();
             panel1.SuspendLayout();
+            panelDataAkun.SuspendLayout();
             panel3.SuspendLayout();
-            panel4.SuspendLayout();
+            panelDokter.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)previewProfile).BeginInit();
             panelChildTopLeftRekamMedis.SuspendLayout();
             panelChildTopRekamMedis.SuspendLayout();
             SuspendLayout();
@@ -86,7 +88,7 @@
             // panel1
             // 
             panel1.AutoScroll = true;
-            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panelDataAkun);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 93);
@@ -95,46 +97,96 @@
             panel1.Size = new Size(1100, 695);
             panel1.TabIndex = 9;
             // 
+            // panelDataAkun
+            // 
+            panelDataAkun.AutoScroll = true;
+            panelDataAkun.BackColor = Color.White;
+            panelDataAkun.Controls.Add(label3);
+            panelDataAkun.Controls.Add(panel3);
+            panelDataAkun.Controls.Add(panelDokter);
+            panelDataAkun.Controls.Add(label15);
+            panelDataAkun.Controls.Add(textBox1);
+            panelDataAkun.Controls.Add(label6);
+            panelDataAkun.Controls.Add(label10);
+            panelDataAkun.Controls.Add(txtEmail);
+            panelDataAkun.Controls.Add(label7);
+            panelDataAkun.Controls.Add(label16);
+            panelDataAkun.Controls.Add(label8);
+            panelDataAkun.Controls.Add(cmdLevel);
+            panelDataAkun.Controls.Add(label5);
+            panelDataAkun.Controls.Add(txtUsername);
+            panelDataAkun.Controls.Add(label13);
+            panelDataAkun.Controls.Add(label14);
+            panelDataAkun.Location = new Point(380, 23);
+            panelDataAkun.Name = "panelDataAkun";
+            panelDataAkun.Size = new Size(524, 612);
+            panelDataAkun.TabIndex = 64;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(286, 217);
+            label3.Name = "label3";
+            label3.Size = new Size(210, 15);
+            label3.TabIndex = 41;
+            label3.Text = "Kosongkan jika tidak ingin mengubah.";
+            // 
             // panel3
             // 
-            panel3.AutoScroll = true;
-            panel3.BackColor = Color.White;
-            panel3.Controls.Add(panel4);
-            panel3.Controls.Add(label12);
-            panel3.Controls.Add(label15);
-            panel3.Controls.Add(textBox1);
-            panel3.Controls.Add(label6);
-            panel3.Controls.Add(label10);
-            panel3.Controls.Add(txtEmail);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(label16);
-            panel3.Controls.Add(label9);
-            panel3.Controls.Add(label8);
-            panel3.Controls.Add(cmdLevel);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(txtUsername);
+            panel3.Controls.Add(label4);
             panel3.Controls.Add(btnSunting);
-            panel3.Controls.Add(label13);
-            panel3.Controls.Add(label14);
-            panel3.Location = new Point(380, 23);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(0, 512);
             panel3.Name = "panel3";
-            panel3.Size = new Size(524, 571);
-            panel3.TabIndex = 64;
+            panel3.Size = new Size(524, 100);
+            panel3.TabIndex = 40;
             // 
-            // panel4
+            // label4
             // 
-            panel4.Controls.Add(label19);
-            panel4.Controls.Add(label11);
-            panel4.Controls.Add(textBox2);
-            panel4.Controls.Add(label17);
-            panel4.Controls.Add(radioPerempuan);
-            panel4.Controls.Add(radioLakiLaki);
-            panel4.Controls.Add(label18);
-            panel4.Controls.Add(txtNama);
-            panel4.Location = new Point(15, 219);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(497, 254);
-            panel4.TabIndex = 39;
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(294, 17);
+            label4.Name = "label4";
+            label4.Size = new Size(194, 15);
+            label4.TabIndex = 42;
+            label4.Text = "Pastika data yang anda kirim benar!";
+            // 
+            // btnSunting
+            // 
+            btnSunting.BackColor = Color.FromArgb(4, 63, 98);
+            btnSunting.Cursor = Cursors.Hand;
+            btnSunting.FlatAppearance.BorderSize = 0;
+            btnSunting.FlatStyle = FlatStyle.Flat;
+            btnSunting.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSunting.ForeColor = Color.White;
+            btnSunting.IconChar = FontAwesome.Sharp.IconChar.Marker;
+            btnSunting.IconColor = SystemColors.Window;
+            btnSunting.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSunting.IconSize = 20;
+            btnSunting.Location = new Point(367, 41);
+            btnSunting.Name = "btnSunting";
+            btnSunting.Padding = new Padding(10, 0, 0, 0);
+            btnSunting.Size = new Size(133, 34);
+            btnSunting.TabIndex = 5;
+            btnSunting.Text = "Sunting";
+            btnSunting.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSunting.UseVisualStyleBackColor = false;
+            btnSunting.Click += btnSunting_Click;
+            // 
+            // panelDokter
+            // 
+            panelDokter.Controls.Add(label19);
+            panelDokter.Controls.Add(label11);
+            panelDokter.Controls.Add(txtAlamat);
+            panelDokter.Controls.Add(label17);
+            panelDokter.Controls.Add(radioPerempuan);
+            panelDokter.Controls.Add(radioLakiLaki);
+            panelDokter.Controls.Add(label18);
+            panelDokter.Controls.Add(txtNama);
+            panelDokter.Location = new Point(3, 229);
+            panelDokter.Name = "panelDokter";
+            panelDokter.Size = new Size(497, 254);
+            panelDokter.TabIndex = 39;
             // 
             // label19
             // 
@@ -159,16 +211,17 @@
             label11.TabIndex = 38;
             label11.Text = "Alamat";
             // 
-            // textBox2
+            // txtAlamat
             // 
-            textBox2.BackColor = Color.FromArgb(230, 231, 233);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(21, 164);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(466, 80);
-            textBox2.TabIndex = 37;
+            txtAlamat.BackColor = Color.FromArgb(230, 231, 233);
+            txtAlamat.BorderStyle = BorderStyle.None;
+            txtAlamat.Font = new Font("Arial", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtAlamat.Location = new Point(21, 164);
+            txtAlamat.Multiline = true;
+            txtAlamat.Name = "txtAlamat";
+            txtAlamat.Size = new Size(466, 80);
+            txtAlamat.TabIndex = 37;
+            txtAlamat.TextChanged += txtAlamat_TextChanged;
             // 
             // label17
             // 
@@ -191,6 +244,7 @@
             radioPerempuan.TabStop = true;
             radioPerempuan.Text = "perempuan";
             radioPerempuan.UseVisualStyleBackColor = true;
+            radioPerempuan.CheckedChanged += radioPerempuan_CheckedChanged;
             // 
             // radioLakiLaki
             // 
@@ -202,6 +256,7 @@
             radioLakiLaki.TabStop = true;
             radioLakiLaki.Text = "laki-laki";
             radioLakiLaki.UseVisualStyleBackColor = true;
+            radioLakiLaki.CheckedChanged += radioLakiLaki_CheckedChanged;
             // 
             // label18
             // 
@@ -224,17 +279,7 @@
             txtNama.Name = "txtNama";
             txtNama.Size = new Size(216, 28);
             txtNama.TabIndex = 32;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.FromArgb(252, 0, 0);
-            label12.Location = new Point(358, 159);
-            label12.Name = "label12";
-            label12.Size = new Size(13, 13);
-            label12.TabIndex = 38;
-            label12.Text = "*";
+            txtNama.TextChanged += txtNama_TextChanged;
             // 
             // label15
             // 
@@ -257,6 +302,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(216, 28);
             textBox1.TabIndex = 36;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label6
             // 
@@ -291,6 +337,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(216, 28);
             txtEmail.TabIndex = 30;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // label7
             // 
@@ -314,17 +361,6 @@
             label16.TabIndex = 23;
             label16.Text = "*";
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.FromArgb(252, 0, 0);
-            label9.Location = new Point(341, 486);
-            label9.Name = "label9";
-            label9.Size = new Size(161, 13);
-            label9.TabIndex = 15;
-            label9.Text = "Pastikan data diisi dengan benar!";
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -346,6 +382,7 @@
             cmdLevel.Name = "cmdLevel";
             cmdLevel.Size = new Size(216, 24);
             cmdLevel.TabIndex = 12;
+            cmdLevel.SelectedIndexChanged += cmdLevel_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -368,27 +405,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(216, 28);
             txtUsername.TabIndex = 6;
-            // 
-            // btnSunting
-            // 
-            btnSunting.BackColor = Color.FromArgb(4, 63, 98);
-            btnSunting.Cursor = Cursors.Hand;
-            btnSunting.FlatAppearance.BorderSize = 0;
-            btnSunting.FlatStyle = FlatStyle.Flat;
-            btnSunting.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSunting.ForeColor = Color.White;
-            btnSunting.IconChar = FontAwesome.Sharp.IconChar.Marker;
-            btnSunting.IconColor = SystemColors.Window;
-            btnSunting.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSunting.IconSize = 20;
-            btnSunting.Location = new Point(369, 514);
-            btnSunting.Name = "btnSunting";
-            btnSunting.Padding = new Padding(10, 0, 0, 0);
-            btnSunting.Size = new Size(133, 34);
-            btnSunting.TabIndex = 4;
-            btnSunting.Text = "Sunting";
-            btnSunting.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSunting.UseVisualStyleBackColor = false;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // label13
             // 
@@ -417,36 +434,36 @@
             // 
             panel2.AutoScroll = true;
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(label3);
+            panel2.Controls.Add(lblRole);
+            panel2.Controls.Add(lblUsername);
             panel2.Controls.Add(btnAmbilGambar);
-            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(previewProfile);
             panel2.Location = new Point(23, 23);
             panel2.Name = "panel2";
             panel2.Size = new Size(330, 343);
             panel2.TabIndex = 63;
             // 
-            // label4
+            // lblRole
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.FromArgb(126, 209, 7);
-            label4.Location = new Point(133, 255);
-            label4.Name = "label4";
-            label4.Size = new Size(51, 19);
-            label4.TabIndex = 64;
-            label4.Text = "admin";
+            lblRole.Font = new Font("Segoe UI", 10.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRole.ForeColor = Color.FromArgb(126, 209, 7);
+            lblRole.Location = new Point(60, 240);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(200, 19);
+            lblRole.TabIndex = 64;
+            lblRole.Text = "admin";
+            lblRole.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lblUsername
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(4, 63, 98);
-            label3.Location = new Point(80, 219);
-            label3.Name = "label3";
-            label3.Size = new Size(167, 21);
-            label3.TabIndex = 63;
-            label3.Text = "Muhammad Bintang";
+            lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.ForeColor = Color.FromArgb(4, 63, 98);
+            lblUsername.Location = new Point(36, 212);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(250, 21);
+            lblUsername.TabIndex = 63;
+            lblUsername.Text = "username";
+            lblUsername.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnAmbilGambar
             // 
@@ -465,16 +482,17 @@
             btnAmbilGambar.Size = new Size(29, 26);
             btnAmbilGambar.TabIndex = 46;
             btnAmbilGambar.UseVisualStyleBackColor = false;
+            btnAmbilGambar.Click += btnAmbilGambar_Click;
             // 
-            // pictureBox1
+            // previewProfile
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(94, 57);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(137, 131);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 45;
-            pictureBox1.TabStop = false;
+            previewProfile.Image = (Image)resources.GetObject("previewProfile.Image");
+            previewProfile.Location = new Point(94, 57);
+            previewProfile.Name = "previewProfile";
+            previewProfile.Size = new Size(137, 131);
+            previewProfile.SizeMode = PictureBoxSizeMode.Zoom;
+            previewProfile.TabIndex = 45;
+            previewProfile.TabStop = false;
             // 
             // label2
             // 
@@ -531,13 +549,14 @@
             Name = "FormAkun";
             Text = "Form Akun";
             panel1.ResumeLayout(false);
+            panelDataAkun.ResumeLayout(false);
+            panelDataAkun.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panelDokter.ResumeLayout(false);
+            panelDokter.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)previewProfile).EndInit();
             panelChildTopLeftRekamMedis.ResumeLayout(false);
             panelChildTopLeftRekamMedis.PerformLayout();
             panelChildTopRekamMedis.ResumeLayout(false);
@@ -553,12 +572,11 @@
         private Label label1;
         private Panel panelChildTopRekamMedis;
         private Panel panel2;
-        private Label label4;
-        private Label label3;
+        private Label lblRole;
+        private Label lblUsername;
         private FontAwesome.Sharp.IconButton btnAmbilGambar;
-        private PictureBox pictureBox1;
-        private Panel panel3;
-        private Label label12;
+        private PictureBox previewProfile;
+        private Panel panelDataAkun;
         private Label label15;
         private TextBox textBox1;
         private Label label6;
@@ -574,14 +592,17 @@
         private FontAwesome.Sharp.IconButton btnSunting;
         private Label label13;
         private Label label14;
-        private Panel panel4;
+        private Panel panelDokter;
         private Label label19;
         private Label label11;
-        private TextBox textBox2;
+        private TextBox txtAlamat;
         private Label label17;
         private RadioButton radioPerempuan;
         private RadioButton radioLakiLaki;
         private Label label18;
         private TextBox txtNama;
+        private Panel panel3;
+        private Label label3;
+        private Label label4;
     }
 }

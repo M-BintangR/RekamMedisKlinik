@@ -9,18 +9,19 @@ namespace RekamMedisKlinik.Model
         public string Email { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }
-
         public string Avatar { get; set; }
+        public string Password { get; set; }
 
         private string fileDestination =  @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Storage\\";
 
-        public Users(int id, string email, string username, string role, string avatar = null)
+        public Users(int id, string email, string username, string role, string avatar = null, string password = null)
         {
             this.Id = id;
             this.Email = email;
             this.Username = username;
             this.Role = role;
             this.Avatar = avatar;
+            this.Password = password;
         }
 
         // method get gravatar url
