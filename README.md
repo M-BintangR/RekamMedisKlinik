@@ -35,4 +35,4 @@
 
 ## Tabel & Relasi Database
 
-<img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/database.png" alt="database" width="900" height="1000" style="object-fit: cover">
+<img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/database.png" alt="database">
