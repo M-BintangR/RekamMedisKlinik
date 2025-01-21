@@ -8,7 +8,7 @@ namespace RekamMedisKlinik
     public partial class FormAkun : Form
     {
         private string level, username, email, password, namaDokter, jenisKelamin, alamat, idUser, pathFileGambar, nameFile, idDokter;
-        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Aseets\\default-picture.png";
+        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Assets\\default-picture.png";
         private string fileDestination = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Storage\\";
 
         public FormAkun()

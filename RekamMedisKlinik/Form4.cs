@@ -7,7 +7,7 @@ namespace RekamMedisKlinik
     public partial class FormChildPengguna : Form
     {
         private string nameFile, pathFileGambar, level, email, username, password, fileUrl, idUser;
-        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Aseets\\default-picture.png";
+        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Assets\\default-picture.png";
         private string fileDestination = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Storage\\";
 
         public FormChildPengguna()

@@ -5,7 +5,7 @@ namespace RekamMedisKlinik
     public partial class FormChildPembayaran : Form
     {
         private string namaDokter, namaPasien, diagnosa, pengobatan, resep, harga, idPembayaran;
-        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Aseets\\default-picture.png";
+        private string fileDefault = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Assets\\default-picture.png";
         private string fileDestination = @"D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Storage\\";
 
         public FormChildPembayaran()
