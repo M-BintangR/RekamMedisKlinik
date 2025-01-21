@@ -1,10 +1,10 @@
-<h1 style="text-align: center;">APLIKASI REKAM MEDIS KLINIK</h1>
+# APLIKASI REKAM MEDIS KLINIK
 
-<div style="text-align: center;">
-    <img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/logo.png" alt="logo-aplikasi" style="max-width: 200px;">
-</div>
+## Logo Aplikasi
 
-## Fitur Aplikasi
+<img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/logo.png" alt="logo-aplikasi">
+
+## Desain Aplikasi
 
 <img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/login.png" alt="login">
 <img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/open.png" alt="open">
@@ -32,3 +32,7 @@
 6. Management Pembayaran
 7. Management Akun Pengguna
 8. Cetak Riwayat Pembayaran, Dokter & Rekam Medis
+
+## Tabel & Relasi Database
+
+<img src="https://github.com/M-BintangR/RekamMedisKlinik/blob/main/Doc/database.png" alt="database">
