@@ -1,8 +1,4 @@
 ﻿using System.Data;
-using static Mysqlx.Notice.Warning.Types;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-
 namespace RekamMedisKlinik
 {
     public partial class FormJanjiTemu : Form
