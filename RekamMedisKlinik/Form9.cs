@@ -1,10 +1,14 @@
-﻿using System.Data;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Mysqlx;
+using System.Data;
 
 namespace RekamMedisKlinik
 {
     public partial class FormCetak : Form
     {
         private string namePage;
+        private DataTable dataGridSource;
         public FormCetak(string namaCetak)
         {
             InitializeComponent();
@@ -190,19 +194,22 @@ namespace RekamMedisKlinik
                 {
                     case "dokter":
                         dtGridCetak.DataSource = GetDataDokter();
+                        this.dataGridSource = GetDataRekamMedis();
                         break;
 
                     case "riwayat pembayaran":
                         dtGridCetak.DataSource = GetDataRiwayatPembayaran();
+                        this.dataGridSource = GetDataRiwayatPembayaran();
                         break;
 
                     case "rekam medis":
                         dtGridCetak.DataSource = GetDataRekamMedis();
+                        this.dataGridSource = GetDataRekamMedis();
                         break;
 
                     default:
                         MessageBox.Show("Ada yang salah");
-                     break;
+                        break;
                 }
             }
             catch (Exception err)
@@ -214,6 +221,100 @@ namespace RekamMedisKlinik
         private void btnTutup_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void btnCetak_Click(object sender, EventArgs e)
+        {
+            if (dataGridSource.Rows.Count > 0)
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.Filter = "PDF (*.pdf)|*.pdf";
+                save.FileName = $"laporan-{this.namePage}" + DateTime.Now.ToString("d-M-yyyy") + ".pdf";
+                bool ErrorMessage = false;
+
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(save.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(save.FileName);
+                        }
+                        catch (Exception err)
+                        {
+                            ErrorMessage = true;
+                            MessageBox.Show("Ada yang salah : " + err.Message);
+                        }
+                    }
+
+                    if (!ErrorMessage)
+                    {
+                        try
+                        {
+                            PdfPTable pTable = new PdfPTable(dataGridSource.Columns.Count);
+                            pTable.DefaultCell.Padding = 2;
+                            pTable.WidthPercentage = 100;
+                            pTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            // Add headers
+                            foreach (DataColumn col in dataGridSource.Columns)
+                            {
+                                PdfPCell pCell = new PdfPCell(new Phrase(col.ColumnName));
+                                pTable.AddCell(pCell);
+                            }
+
+                            // Add rows
+                            foreach (DataRow row in dataGridSource.Rows)
+                            {
+                                foreach (var cell in row.ItemArray)
+                                {
+                                    pTable.AddCell(cell?.ToString() ?? string.Empty);
+                                }
+                            }
+
+                            using (FileStream fileStream = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                Document document = new Document(PageSize.A4);
+                                PdfWriter.GetInstance(document, fileStream);
+                                document.Open();
+
+                                string logoPath = "D:\\PRAKTIKUM C SHARP\\RekamMedisKlinik\\RekamMedisKlinik\\Assets\\LOGO KLINIK SMALL DARK.png"; 
+                                if (File.Exists(logoPath))
+                                {
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(logoPath);
+                                    logo.ScaleToFit(200f, 200f);
+                                    logo.Alignment = Element.ALIGN_CENTER; 
+                                    logo.SpacingAfter = 20; 
+                                    document.Add(logo);
+                                }
+
+                                // Add title
+                                Paragraph title = new Paragraph($"LAPORAN RIWAYAT {this.namePage.ToUpper()}",
+                                FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16));
+                                title.Alignment = Element.ALIGN_CENTER;
+                                title.SpacingAfter = 20;
+                                document.Add(title);
+
+                                // Add table
+                                document.Add(pTable);
+                                document.Close();
+
+                                fileStream.Close();
+                            }
+
+                            MessageBox.Show("Cetak PDF Berhasil!", "Info");
+                        }
+                        catch (Exception err)
+                        {
+                            MessageBox.Show("Ada yang salah : " + err.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Baris Data Tidak Ditemukan!");
+            }
         }
     }
 }
