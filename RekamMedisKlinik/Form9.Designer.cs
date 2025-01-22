@@ -179,6 +179,7 @@
             btnCetak.Text = "Cetak ";
             btnCetak.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCetak.UseVisualStyleBackColor = false;
+            btnCetak.Click += btnCetak_Click;
             // 
             // FormCetak
             // 
