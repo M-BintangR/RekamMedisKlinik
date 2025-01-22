@@ -1,5 +1,6 @@
 ﻿using FontAwesome.Sharp;
 using Microsoft.VisualBasic.ApplicationServices;
+using RekamMedisKlinik.Model;
 using RekamMedisKlinik.Session;
 using System.Net;
 
@@ -12,7 +13,7 @@ namespace RekamMedisKlinik
         private Color activeColor = Color.FromArgb(231, 246, 255);
         private Color defaultColor = Color.FromArgb(4, 63, 98);
         private int originalPanelWidth;
-        private User user = new User();
+        private string role = UserSessions.CurrentUser.Role;
 
         public FormMenu()
         {
@@ -39,6 +40,28 @@ namespace RekamMedisKlinik
 
             // run avatar url
             ProfilePicture();
+
+            // visible menus for multi roles
+            switch (role) {
+                case "admin":
+                    this.btnPembayaran.Visible = false;
+                    this.btnJanjiTemu.Visible = false;
+                    this.btnPembayaran.Visible = false;
+                    this.btnRekamMedis.Visible = false;
+                 break;
+
+                case "dokter":
+                    this.btnDokter.Visible = false;
+                    this.btnPengguna.Visible = false;
+                    this.btnLaporan.Visible = false;
+                    this.panelSubmenuLaporan.Visible = false;
+                break;
+
+                default:
+                break;
+            }
+
+            
         }
 
         private void ProfilePicture()
@@ -128,7 +151,10 @@ namespace RekamMedisKlinik
                 subMenu.BackColor = Color.FromArgb(242, 255, 222);
 
                 if (this.WindowState == FormWindowState.Normal)
-                    this.panelMenu.Width += 18;
+                    if(this.role == "admin")
+                        this.panelMenu.Width += 1;
+                    else
+                        this.panelMenu.Width += 18;
                 this.panelMenu.AutoScroll = true;
 
             }

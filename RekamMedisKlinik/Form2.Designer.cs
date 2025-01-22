@@ -243,6 +243,7 @@
             btnJanjiTemu.Padding = new Padding(10, 0, 0, 0);
             btnJanjiTemu.Size = new Size(240, 42);
             btnJanjiTemu.TabIndex = 9;
+            btnJanjiTemu.TabStop = false;
             btnJanjiTemu.Text = "Janji Temu Pasien";
             btnJanjiTemu.TextAlign = ContentAlignment.MiddleLeft;
             btnJanjiTemu.TextImageRelation = TextImageRelation.ImageBeforeText;
