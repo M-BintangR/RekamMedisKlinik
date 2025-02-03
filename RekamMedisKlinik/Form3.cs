@@ -1,95 +1,96 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
 namespace RekamMedisKlinik
 {
     public partial class FormChildDashboard : Form
     {
+        private readonly Connection connection = new Connection();
+
         public FormChildDashboard()
         {
             InitializeComponent();
             LoadDataToGrid();
             LoadCountDataTable();
-
         }
 
-        public void LoadCountDataTable()
+        private void LoadCountDataTable()
         {
-            var connection = new Connection();
-
-            string queryPengguna = @"SELECT COUNT(*) FROM users";
-            string queryDokter = @"SELECT COUNT(*) FROM doctors";
-            string queryRekamMedis = @"SELECT COUNT(*) FROM medical_records";
-            string queryJanjiTemu = @"SELECT COUNT(*) FROM appointments";
-
-            this.lblCountPengguna.Text = connection.ExecuteScalar(queryPengguna)?.ToString() ?? "0";
-            this.lblCountDokter.Text = connection.ExecuteScalar(queryDokter)?.ToString() ?? "0";
-            this.lblCountRekamMedis.Text = connection.ExecuteScalar(queryRekamMedis)?.ToString() ?? "0";
-            this.lblCountJanjiTemu.Text = connection.ExecuteScalar(queryJanjiTemu)?.ToString() ?? "0";
-        }
-
-        public DataTable GetJanjiTemu()
-        {
-            var connection = new Connection();
-
-            int currentYear = DateTime.Now.Year;
-            int currentMonth = DateTime.Now.Month;
-
-            string query = @"
-                SELECT name_doctor, name_patient, date, room
-                FROM appointments
-                WHERE YEAR(date) = @currentYear AND MONTH(date) = @currentMonth";
-
-            var parameters = new Dictionary<string, object>
+            try
             {
-                { "currentYear", currentYear },
-                { "currentMonth", currentMonth }
-            };
-
-            var results = connection.ExecuteQuery(query, parameters);
-            DataTable dataTable = new DataTable();
-
-            if (results != null && results.Count > 0)
-            {
-                foreach (var key in results[0].Keys)
-                {
-                    dataTable.Columns.Add(key);
-                }
-
-                foreach (var row in results)
-                {
-                    var dataRow = dataTable.NewRow();
-                    foreach (var key in row.Keys)
-                    {
-                        dataRow[key] = row[key] ?? DBNull.Value;
-                    }
-                    dataTable.Rows.Add(dataRow);
-                }
+                lblCountPengguna.Text = ExecuteScalarQuery("SELECT COUNT(*) FROM users");
+                lblCountDokter.Text = ExecuteScalarQuery("SELECT COUNT(*) FROM doctors");
+                lblCountRekamMedis.Text = ExecuteScalarQuery("SELECT COUNT(*) FROM medical_records");
+                lblCountJanjiTemu.Text = ExecuteScalarQuery("SELECT COUNT(*) FROM appointments");
             }
-
-            return dataTable;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Terjadi kesalahan saat memuat data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public DataTable GetRekamMedis()
+        private string ExecuteScalarQuery(string query)
         {
-            var connection = new Connection();
+            return connection.ExecuteScalar(query)?.ToString() ?? "0";
+        }
 
-            DateTime currentDate = DateTime.Now;
-            DayOfWeek dayOfWeek = currentDate.DayOfWeek;
-            DateTime startOfWeek = currentDate.AddDays(-((int)dayOfWeek));
-            DateTime endOfWeek = startOfWeek.AddDays(6);
-
-            string query = @"
-                SELECT price, name_doctor, name_patient, diagnosis, treatment, address_patient, date_medical 
-                FROM medical_records
-                WHERE DATE(date_medical) BETWEEN @startOfWeek AND @endOfWeek";
-
-            var parameters = new Dictionary<string, object>
+        private DataTable GetJanjiTemu()
+        {
+            try
             {
-                { "startOfWeek", startOfWeek.ToString("yyyy-MM-dd") },
-                { "endOfWeek", endOfWeek.ToString("yyyy-MM-dd") }
-            };
+                int currentYear = DateTime.Now.Year;
+                int currentMonth = DateTime.Now.Month;
 
+                string query = @"
+                    SELECT *
+                    FROM appointments";
 
+                var parameters = new Dictionary<string, object>
+                {
+                    { "currentYear", currentYear },
+                    { "currentMonth", currentMonth }
+                };
+
+                return ExecuteQueryToDataTable(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saat mengambil janji temu: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new DataTable();
+            }
+        }
+
+        private DataTable GetRekamMedis()
+        {
+            try
+            {
+                DateTime currentDate = DateTime.Now;
+                DateTime startOfWeek = currentDate.AddDays(-(int)currentDate.DayOfWeek);
+                DateTime endOfWeek = startOfWeek.AddDays(6);
+
+                string query = @"
+                    SELECT *
+                    FROM medical_records";
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "startOfWeek", startOfWeek.ToString("yyyy-MM-dd") },
+                    { "endOfWeek", endOfWeek.ToString("yyyy-MM-dd") }
+                };
+
+                return ExecuteQueryToDataTable(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saat mengambil rekam medis: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return new DataTable();
+            }
+        }
+
+        private DataTable ExecuteQueryToDataTable(string query, Dictionary<string, object> parameters)
+        {
             var results = connection.ExecuteQuery(query, parameters);
             DataTable dataTable = new DataTable();
 
@@ -118,21 +119,18 @@ namespace RekamMedisKlinik
         {
             try
             {
-                DataTable janjiTemuTable = GetJanjiTemu();
-                DataTable rekamMedisTable = GetRekamMedis();
+                dtGridPertemuan.DataSource = GetJanjiTemu();
+                dtGridRekamMedis.DataSource = GetRekamMedis();
 
-                dtGridPertemuan.DataSource = janjiTemuTable;
-                dtGridRekamMedis.DataSource = rekamMedisTable;
-
-                var janjiTemuHeaders = new Dictionary<string, string>
+                SetGridHeaders(dtGridPertemuan, new Dictionary<string, string>
                 {
                     { "name_doctor", "Nama Dokter" },
                     { "name_patient", "Nama Pasien" },
                     { "date", "Tanggal" },
                     { "room", "Ruangan" }
-                };
+                });
 
-                var rekamMedisHeaders = new Dictionary<string, string>
+                SetGridHeaders(dtGridRekamMedis, new Dictionary<string, string>
                 {
                     { "price", "Harga" },
                     { "name_doctor", "Nama Dokter" },
@@ -141,27 +139,22 @@ namespace RekamMedisKlinik
                     { "treatment", "Pengobatan" },
                     { "address_patient", "Alamat Pasien" },
                     { "date_medical", "Tanggal" }
-                };
-
-                foreach (var head in janjiTemuHeaders)
-                {
-                    if (janjiTemuTable.Columns.Contains(head.Key))
-                    {
-                        dtGridPertemuan.Columns[head.Key].HeaderText = head.Value;
-                    }
-                }
-
-                foreach (var head in rekamMedisHeaders)
-                {
-                    if (rekamMedisTable.Columns.Contains(head.Key))
-                    {
-                        dtGridRekamMedis.Columns[head.Key].HeaderText = head.Value;
-                    }
-                }
+                });
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Terjadi kesalahan: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Terjadi kesalahan saat memuat data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetGridHeaders(DataGridView grid, Dictionary<string, string> headers)
+        {
+            foreach (var header in headers)
+            {
+                if (grid.Columns.Contains(header.Key))
+                {
+                    grid.Columns[header.Key].HeaderText = header.Value;
+                }
             }
         }
 
